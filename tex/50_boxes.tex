@@ -1,78 +1,111 @@
-\tcbuselibrary{theorems, breakable}
+% ------------------------------------------------------------
+% boxes.tex — professional, non-numbered theorem environments
+% ------------------------------------------------------------
 
-% Base style
+\RequirePackage[most]{tcolorbox}
+\RequirePackage{xcolor}
+
+\tcbuselibrary{theorems,breakable,skins}
+
+% ------------------------------------------------------------
+% Colors (muted, professional)
+% ------------------------------------------------------------
+\colorlet{XText}{black!90}
+\colorlet{XSoft}{black!2}
+
+% Muted versions of your colors (not grey, not too saturated)
+\colorlet{ThmC}{XBlue!80!black}
+\colorlet{DefC}{XTeal!80!black}
+\colorlet{ExC}{XOrange!85!black}
+\colorlet{NoteC}{XPurple!80!black}
+\colorlet{PitC}{XGray!85!black} % or just black!70 if you prefer
+
+% ------------------------------------------------------------
+% Global box style
+% ------------------------------------------------------------
 \tcbset{
   enhanced,
   breakable,
-  colback=XSoft,
-  arc=3mm,
-  boxrule=0.6pt,
-  left=10pt,right=10pt,top=8pt,bottom=8pt
+  colback=white,
+  coltext=XText,
+  boxrule=0.35pt,
+  sharp corners=south,
+  arc=1.2mm,
+  left=14pt,right=14pt,top=10pt,bottom=10pt,
+  before skip=10pt plus 2pt minus 2pt,
+  after skip=10pt plus 2pt minus 2pt,
+  title style={font=\bfseries},
 }
 
-% THEOREM
-\newtcbtheorem[
-  number within=chapter
-]{theorem}{Theorem}{
-  colframe=XBlue,
-  borderline west={2pt}{0pt}{XBlue},
-  fonttitle=\bfseries\color{XBlue}
+% ------------------------------------------------------------
+% Base theorem style (thin frame + left rule)
+% ------------------------------------------------------------
+\tcbset{
+  thmstyle/.style={
+    colframe=#1,
+    borderline west={2pt}{0pt}{#1},
+    fonttitle=\bfseries\color{#1},
+    attach title to upper,
+  },
+}
+
+% NON-NUMBERED theorem-like boxes (robust: no star form)
+\newtcbtheorem[no counter]{theorem}{Theorème}{
+  thmstyle=ThmC
 }{thm}
 
-% LEMMA
-\newtcbtheorem[
-  use counter from=theorem
-]{lemma}{Lemma}{
-  colframe=XBlue,
-  borderline west={2pt}{0pt}{XBlue},
-  fonttitle=\bfseries\color{XBlue}
+\newtcbtheorem[no counter]{lemma}{Lemme}{
+  thmstyle=ThmC
 }{lem}
 
-% DEFINITION
-\newtcbtheorem[
-  use counter from=theorem
-]{definition}{Definition}{
-  colframe=XTeal,
-  borderline west={2pt}{0pt}{XTeal},
-  fonttitle=\bfseries\color{XTeal}
+\newtcbtheorem[no counter]{definition}{Définition}{
+  thmstyle=DefC
 }{def}
 
-% EXERCISE
-\newtcbtheorem[
-  use counter from=theorem
-]{exercise}{Exercise}{
-  colframe=XOrange,
-  borderline west={2pt}{0pt}{XOrange},
-  fonttitle=\bfseries\color{XOrange}
+\newtcbtheorem[no counter]{exercise}{Exercice}{
+  thmstyle=ExC
 }{ex}
 
-% INTUITION
+
+% ------------------------------------------------------------
+% Intuition / Pitfall (light background, same visual language)
+% ------------------------------------------------------------
 \newtcolorbox{intuitionbox}{
-  colframe=XPurple,
+  breakable,
   colback=XSoft,
-  borderline west={2pt}{0pt}{XPurple},
-  title=\textbf{Intuition}
+  colframe=NoteC,
+  borderline west={2pt}{0pt}{NoteC},
+  boxrule=0.35pt,
+  title=\textbf{Intuition},
+  fonttitle=\bfseries\color{NoteC},
 }
 
-% PITFALL
 \newtcolorbox{pitfallbox}{
-  colframe=XGray,
+  breakable,
   colback=XSoft,
-  borderline west={2pt}{0pt}{XGray},
-  title=\textbf{Pitfall}
+  colframe=PitC,
+  borderline west={2pt}{0pt}{PitC},
+  boxrule=0.35pt,
+  title=\textbf{Pitfall},
+  fonttitle=\bfseries\color{PitC},
 }
 
-% SOLUTIONS TOGGLE
+% ------------------------------------------------------------
+% Solution toggle
+% ------------------------------------------------------------
 \newif\ifshowsolutions
 \showsolutionstrue
 
 \newenvironment{solution}{
   \ifshowsolutions
     \begin{tcolorbox}[
-      colframe=XPurple,
-      colback=XSoft,
-      borderline west={2pt}{0pt}{XPurple},
-      title=\textbf{Solution}
+      breakable,
+      colback=white,
+      colframe=NoteC,
+      borderline west={2pt}{0pt}{NoteC},
+      boxrule=0.35pt,
+      title=\textbf{Solution},
+      fonttitle=\bfseries\color{NoteC},
     ]
   \else
     \expandafter\comment
@@ -80,5 +113,18 @@
 }{
   \ifshowsolutions
     \end{tcolorbox}
+  \else
+    \endcomment
   \fi
+}
+
+\newtcolorbox{remarkbox}{
+  breakable,
+  colback=XSoft,
+  colframe=XGray!85!black,
+  borderline west={2pt}{0pt}{XGray!85!black},
+  boxrule=0.35pt,
+  title=\textbf{Remarque},
+  fonttitle=\bfseries\color{XGray!85!black},
+  left=12pt
 }

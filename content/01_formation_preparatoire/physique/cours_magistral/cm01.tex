@@ -1,0 +1,671 @@
+% =========================================================
+\section*{Oscillateur harmonique classique}
+\addcontentsline{toc}{section}{Oscillateur harmonique classique}
+% =========================================================
+
+On considère un oscillateur harmonique classique de masse $m$ et de
+pulsation $\omega$, décrit par le Hamiltonien
+\[
+H(x,p)=\frac{p^2}{2m}+\frac{1}{2}m\omega^2 x^2.
+\]
+
+Pour une énergie fixée $E$, le mouvement est périodique et entièrement
+déterminé par la condition
+\[
+H(x,p)=E.
+\]
+
+% =========================================================
+\subsection*{Espace des phases et trajectoire}
+\addcontentsline{toc}{subsection}{Espace des phases et trajectoire}
+% =========================================================
+
+Dans l’espace des phases $(x,p)$, l’équation $H(x,p)=E$ définit une
+ellipse.
+Les demi-axes de cette ellipse sont
+\[
+x_{\max}=\sqrt{\frac{2E}{m\omega^2}},
+\qquad
+p_{\max}=\sqrt{2mE}.
+\]
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm,>=Latex]
+
+  % --- Visual semi-axes (in cm because x=1cm, y=1cm) ---
+  \def\xa{3.6}
+  \def\pb{2.2}
+
+  % --- Axes ---
+  \draw[->] (-4.4,0) -- (4.6,0) node[below right] {$x$};
+  \draw[->] (0,-3.0) -- (0,3.1) node[above left] {$p$};
+
+  % --- Shaded area of the ellipse ---
+  \fill[XBlue,opacity=0.10]
+    plot[domain=0:360, samples=240]
+    ({\xa*cos(\x)}, {\pb*sin(\x)}) -- cycle;
+
+  % --- Ellipse boundary ---
+  \draw[XBlue,line width=1.0pt]
+    plot[domain=0:360, samples=240]
+    ({\xa*cos(\x)}, {\pb*sin(\x)}) -- cycle;
+
+  % --- Direction arrow on the orbit (time evolution) ---
+  \draw[XBlue,->,line width=0.9pt]
+    plot[domain=20:55, samples=40]
+    ({\xa*cos(\x)}, {\pb*sin(\x)});
+
+  % --- Extremal points ---
+  \fill ( \xa,0) circle (1.2pt);
+  \fill (-\xa,0) circle (1.2pt);
+  \fill (0, \pb) circle (1.2pt);
+  \fill (0,-\pb) circle (1.2pt);
+
+  % --- Labels: x_max and p_max ---
+  \draw[<->] (0,-0.55) -- (\xa,-0.55);
+  \node[below] at ({\xa/2},-0.55) {$x_{\max}$};
+
+  \draw[<->] (0.55,0) -- (0.55,\pb);
+  \node[right] at (0.55,{\pb/2}) {$p_{\max}$};
+
+  % --- Area label ---
+  \node at (1.1,0.8) {$\mathcal{A}$};
+
+  % --- Energy shell label ---
+  \node[align=left] at (1.9,2.45) {$H(x,p)=E$};
+
+\end{tikzpicture}
+\caption{Trajectoire en espace des phases $(x,p)$ pour l’oscillateur harmonique à énergie fixée : une ellipse. L’aire $\mathcal{A}$ intervient dans l’action $J=\frac{1}{2\pi}\oint p\,\dd x$.}
+\end{figure}
+
+
+Cette représentation géométrique sera essentielle pour introduire
+la notion d’action.
+
+% =========================================================
+\subsection*{Action et interprétation géométrique}
+\addcontentsline{toc}{subsection}{Action et interprétation géométrique}
+% =========================================================
+
+On définit l’action $J$ associée à un mouvement périodique par
+\[
+J=\frac{1}{2\pi}\oint p\,\dd x.
+\]
+
+\begin{theorem}
+L'action $J$ est égale
+à l’aire de l’ellipse dans l’espace des phases divisée par $2\pi$,
+et vérifie
+\[
+J=\frac{E}{\omega}.
+\]
+\end{theorem}
+
+\begin{proof}
+L’aire $\mathcal{A}$ de l’ellipse de demi-axes $x_{\max}$ et $p_{\max}$
+est donnée par
+\[
+\mathcal{A}=\pi x_{\max} p_{\max}
+= \pi \sqrt{\frac{2E}{m\omega^2}} \sqrt{2mE}
+= \frac{2\pi E}{\omega}.
+\]
+Par définition de l’action, on a donc $J=\mathcal{A}/(2\pi)=E/\omega$.
+\end{proof}
+
+% =========================================================
+\section*{Interférences de Young}
+\addcontentsline{toc}{section}{Interférences de Young}
+% =========================================================
+
+On considère une source monochromatique de pulsation $\omega$ et de longueur d’onde
+$\lambda$ (nombre d’onde $k = 2\pi/\lambda$), éclairant deux fentes $S_1$ et $S_2$
+séparées d’une distance $a$. Un écran est placé à une distance $D \gg a$.
+On observe le champ en un point $M$ de l’écran, repéré par sa coordonnée transverse $y$
+(par rapport à l’axe central).
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm,>=Latex,scale=1.0]
+
+  % Parameters
+  \def\a{2.2}      % slit separation (in cm, drawn)
+  \def\D{8.0}      % screen distance
+  \def\yM{2.2}     % observation point height
+
+  % Axes / baseline (optional)
+  %\draw[->,black!40] (-0.5,0) -- (\D+1,0) node[below] {$x$};
+
+  % Double-slit plane
+  \draw[black!70,line width=0.7pt] (0,-3.2) -- (0,3.2);
+  \node[black!70,rotate=90] at (-0.25,0) {Fentes};
+
+  % Slits positions
+  \coordinate (S1) at (0, \a/2);
+  \coordinate (S2) at (0,-\a/2);
+
+  % Draw slits as small openings
+  \draw[line width=2.0pt,white] (0, \a/2-0.18) -- (0, \a/2+0.18);
+  \draw[line width=2.0pt,white] (0,-\a/2-0.18) -- (0,-\a/2+0.18);
+  \fill[black] (S1) circle (0.8pt);
+  \fill[black] (S2) circle (0.8pt);
+  \node[left] at (S1) {$S_1$};
+  \node[left] at (S2) {$S_2$};
+
+  % Screen
+  \draw[black!70,line width=0.7pt] (\D,-3.2) -- (\D,3.2);
+  \node[black!70,rotate=90] at (\D+0.25,0) {Écran};
+
+  % Observation point M
+  \coordinate (M) at (\D,\yM);
+  \fill[black] (M) circle (1.2pt);
+  \node[right] at (M) {$M$};
+
+  % Central point O on screen
+  \coordinate (O) at (\D,0);
+  \fill[black] (O) circle (0.8pt);
+  \node[right] at (O) {$O$};
+
+  % Rays
+  \draw[XBlue,line width=1.0pt] (S1) -- (M);
+  \draw[XBlue,line width=1.0pt] (S2) -- (M);
+
+  % Indicate distances r1, r2 along rays (small labels)
+  \node[fill=white,inner sep=1pt] at (4.2,2.1) {$r_1$};
+  \node[fill=white,inner sep=1pt] at (4.4,0.9) {$r_2$};
+
+  % Mark y on screen
+  \draw[<->,black!70] (\D+0.7,0) -- (\D+0.7,\yM);
+  \node[right,black!70] at (\D+0.7,\yM/2) {$y$};
+
+  % Baseline for theta from slit midpoint to M
+  \coordinate (C) at (0,0); % midpoint between slits
+  \draw[black!40,dashed] (C) -- (\D,0);
+  \draw[black!40,dashed] (C) -- (M);
+
+  % Angle theta at C
+  \draw[black!60] (1.1,0) arc (0:{atan(\yM/\D)}:1.1);
+  \node[black!60] at (1.35,0.35) {$\theta$};
+
+  % Indicate slit separation a
+  \draw[<->,black!70] (-0.6,-\a/2) -- (-0.6,\a/2);
+  \node[left,black!70] at (-0.6,0) {$a$};
+
+  % Far-field note
+  \node[black!50] at (4.0,-2.6) {$D \gg a \;\;(\text{approx. champ lointain})$};
+
+\end{tikzpicture}
+\caption{Montage de Young : deux fentes $S_1,S_2$ séparées de $a$, écran à distance $D$,
+observation en $M$ (coordonnée $y$). La différence de marche vaut $\delta = r_1-r_2 \simeq a\sin\theta \simeq a\,y/D$.}
+\end{figure}
+
+\paragraph{Champ complexe en $M$.}
+On modélise l’onde issue de chaque fente par une onde sphérique (ou quasi-plane en champ lointain).
+Le champ complexe en $M$ s’écrit
+\[
+\mathcal{E}(M,t)=\mathcal{E}_1(M,t)+\mathcal{E}_2(M,t),
+\qquad
+\mathcal{E}_j(M,t)=E_{0j}\,e^{i(\omega t-k r_j+\varphi_j)}.
+\]
+Ici $r_j=|S_jM|$ et $\varphi_j$ est une phase initiale (liée à la source et au trajet amont).
+
+En champ lointain, on a $r_1\simeq r_2\simeq D$ pour les amplitudes, donc on peut prendre
+$E_{01}\simeq E_{02}=E_0$ (mêmes intensités issues des fentes). La dépendance en phase est elle
+cruciale :
+\[
+\Delta\phi = ( -kr_1+\varphi_1)-(-kr_2+\varphi_2)= -k(r_1-r_2)+(\varphi_1-\varphi_2)
+= -k\delta + \Delta\varphi.
+\]
+
+\paragraph{Différence de marche.}
+Géométriquement,
+\[
+\delta=r_1-r_2 \simeq a\sin\theta \simeq a\,\frac{y}{D}
+\quad (D\gg a,\; \theta \text{ petit}).
+\]
+Si l’illumination des deux fentes est cohérente (même source), on peut prendre $\Delta\varphi=0$
+(ou constante), ce qui donne
+\[
+\Delta\phi \simeq -k\,a\frac{y}{D}.
+\]
+
+\paragraph{Intensité observée.}
+L’intensité est proportionnelle à la moyenne temporelle de $|\mathcal{E}|^2$ :
+\[
+I(M)\propto \langle |\mathcal{E}_1+\mathcal{E}_2|^2\rangle
+= \langle |\mathcal{E}_1|^2\rangle + \langle |\mathcal{E}_2|^2\rangle
++ 2\Re\langle \mathcal{E}_1\mathcal{E}_2^\ast\rangle.
+\]
+En supposant $E_{01}=E_{02}=E_0$ et cohérence parfaite, on obtient
+\[
+I(M)=I_1+I_2+2\sqrt{I_1 I_2}\cos(\Delta\phi).
+\]
+En particulier si $I_1=I_2=I_0$, alors
+\[
+I(M)=2I_0\bigl(1+\cos(\Delta\phi)\bigr)=4I_0\cos^2\!\Bigl(\frac{\Delta\phi}{2}\Bigr).
+\]
+Avec $\Delta\phi\simeq k\,a\,y/D$ (au signe près), on obtient les franges :
+\[
+I(y)=4I_0\cos^2\!\Bigl(\frac{\pi a}{\lambda D}\,y\Bigr).
+\]
+
+\paragraph{Positions des franges.}
+Les maxima (constructif) satisfont $\Delta\phi =2\pi m$ :
+\[
+y_m \simeq m\,\frac{\lambda D}{a}, \qquad m\in\mathbb{Z},
+\]
+et l’interfrange vaut
+\[
+i = y_{m+1}-y_m=\frac{\lambda D}{a}.
+\]
+
+\begin{intuitionbox}
+L’interférence est un phénomène \emph{d’addition des amplitudes complexes} :
+les intensités ne s’additionnent pas directement, c’est le terme croisé
+$2\Re(\mathcal{E}_1\mathcal{E}_2^\ast)$ qui crée les franges via $\cos(\Delta\phi)$.
+\end{intuitionbox}
+
+% =========================================================
+\section*{Équations d’onde pour $\mathbf{E}$ et $\mathbf{B}$ à partir de Maxwell}
+\addcontentsline{toc}{section}{Équations d’onde pour $\mathbf{E}$ et $\mathbf{B}$ à partir de Maxwell}
+% =========================================================
+
+On se place dans le vide (ou plus généralement dans un milieu homogène, linéaire, isotrope),
+sans charges ni courants libres :
+\[
+\rho = 0,\qquad \mathbf{j}=\mathbf{0}.
+\]
+Les équations de Maxwell s’écrivent alors
+\[
+\nabla\cdot\mathbf{E}=0,\qquad
+\nabla\cdot\mathbf{B}=0,\qquad
+\nabla\times\mathbf{E}=-\frac{\partial \mathbf{B}}{\partial t},\qquad
+\nabla\times\mathbf{B}=\mu_0\varepsilon_0\,\frac{\partial \mathbf{E}}{\partial t}.
+\]
+On note $c=\dfrac{1}{\sqrt{\mu_0\varepsilon_0}}$ la célérité des ondes électromagnétiques dans le vide.
+
+% =========================================================
+\subsection*{Équation d’onde pour le champ électrique}
+\addcontentsline{toc}{subsection}{Équation d’onde pour le champ électrique}
+% =========================================================
+
+On applique l’opérateur rotationnel $\nabla\times$ à l’équation de Faraday :
+\[
+\nabla\times(\nabla\times\mathbf{E})
+= -\frac{\partial}{\partial t}\bigl(\nabla\times\mathbf{B}\bigr).
+\]
+En utilisant l’équation d’Ampère-Maxwell dans le vide,
+\[
+\nabla\times\mathbf{B}=\mu_0\varepsilon_0\,\frac{\partial \mathbf{E}}{\partial t},
+\]
+on obtient
+\[
+\nabla\times(\nabla\times\mathbf{E})
+= -\mu_0\varepsilon_0\,\frac{\partial^2 \mathbf{E}}{\partial t^2}.
+\]
+On utilise ensuite l’identité vectorielle (justifiée dans la remarque ci-dessous)
+\[
+\nabla\times(\nabla\times\mathbf{E})
+=\nabla(\nabla\cdot\mathbf{E})-\nabla^2\mathbf{E}.
+\]
+Or dans le vide $\nabla\cdot\mathbf{E}=0$, donc
+\[
+-\nabla^2\mathbf{E}=-\mu_0\varepsilon_0\,\frac{\partial^2 \mathbf{E}}{\partial t^2},
+\]
+c’est-à-dire l’équation d’onde vectorielle
+\[
+\boxed{\;\nabla^2\mathbf{E}-\frac{1}{c^2}\,\frac{\partial^2 \mathbf{E}}{\partial t^2}= \mathbf{0}\;}
+\qquad\text{avec}\qquad
+c=\frac{1}{\sqrt{\mu_0\varepsilon_0}}.
+\]
+
+% =========================================================
+\subsection*{Équation d’onde pour le champ magnétique}
+\addcontentsline{toc}{subsection}{Équation d’onde pour le champ magnétique}
+% =========================================================
+
+On procède de manière analogue. On applique $\nabla\times$ à l’équation d’Ampère-Maxwell :
+\[
+\nabla\times(\nabla\times\mathbf{B})
+=\mu_0\varepsilon_0\,\frac{\partial}{\partial t}\bigl(\nabla\times\mathbf{E}\bigr).
+\]
+En utilisant Faraday $\nabla\times\mathbf{E}=-\dfrac{\partial \mathbf{B}}{\partial t}$, on trouve
+\[
+\nabla\times(\nabla\times\mathbf{B})
+=-\mu_0\varepsilon_0\,\frac{\partial^2\mathbf{B}}{\partial t^2}.
+\]
+Puis, grâce à l’identité
+\[
+\nabla\times(\nabla\times\mathbf{B})
+=\nabla(\nabla\cdot\mathbf{B})-\nabla^2\mathbf{B},
+\]
+et au fait que $\nabla\cdot\mathbf{B}=0$, on obtient finalement
+\[
+\boxed{\;\nabla^2\mathbf{B}-\frac{1}{c^2}\,\frac{\partial^2 \mathbf{B}}{\partial t^2}= \mathbf{0}\;}
+\qquad\text{avec}\qquad
+c=\frac{1}{\sqrt{\mu_0\varepsilon_0}}.
+\]
+
+\begin{intuitionbox}
+Dans le vide, $\mathbf{E}$ et $\mathbf{B}$ sont couplés par Maxwell : une variation temporelle de $\mathbf{B}$
+crée du rotationnel de $\mathbf{E}$ (Faraday), et une variation temporelle de $\mathbf{E}$ crée du rotationnel de $\mathbf{B}$
+(Ampère-Maxwell). Cette boucle dynamique engendre une propagation : l’onde électromagnétique.
+\end{intuitionbox}
+
+% =========================================================
+\subsection*{Remarque : pourquoi $\nabla\times(\nabla\times\mathbf{A})=\nabla(\nabla\cdot\mathbf{A})-\nabla^2\mathbf{A}$ ?}
+\addcontentsline{toc}{subsection}{Remarque : identité du \texorpdfstring{$\nabla\times(\nabla\times(\cdot))$}{rot(rot(.))}}
+% =========================================================
+
+\begin{remarkbox}
+\textbf{Idée.} L’opérateur $\nabla\times(\nabla\times\cdot)$ mesure la partie ``tourbillonnaire du tourbillon''.
+En analyse vectorielle, tout champ suffisamment régulier se décompose (localement, et globalement sous hypothèses)
+en une partie gradient et une partie rotationnel (décomposition de Helmholtz). L’identité ci-dessous rend cette séparation explicite.
+
+\medskip
+\textbf{Démonstration en coordonnées.}
+Soit $\mathbf{A}=(A_1,A_2,A_3)$ un champ $\mathcal{C}^2$. En notation indicielle, on utilise le symbole de Levi-Civita
+$\varepsilon_{ijk}$ et la convention de sommation d’Einstein.
+On a
+\[
+(\nabla\times\mathbf{A})_i=\varepsilon_{ijk}\,\partial_j A_k.
+\]
+Donc
+\[
+(\nabla\times(\nabla\times\mathbf{A}))_i
+=\varepsilon_{ilm}\,\partial_l\bigl((\nabla\times\mathbf{A})_m\bigr)
+=\varepsilon_{ilm}\,\partial_l\bigl(\varepsilon_{mjk}\,\partial_j A_k\bigr).
+\]
+On utilise l’identité
+\[
+\varepsilon_{ilm}\varepsilon_{mjk}=\delta_{ij}\delta_{lk}-\delta_{ik}\delta_{lj},
+\]
+où $\delta_{ij}$ est le symbole de Kronecker. Ainsi,
+\[
+(\nabla\times(\nabla\times\mathbf{A}))_i
+=(\delta_{ij}\delta_{lk}-\delta_{ik}\delta_{lj})\,\partial_l\partial_j A_k
+=\partial_k\partial_i A_k-\partial_j\partial_j A_i.
+\]
+Or $\partial_k A_k=\nabla\cdot\mathbf{A}$, donc $\partial_k\partial_i A_k=\partial_i(\nabla\cdot\mathbf{A})$,
+et $\partial_j\partial_j A_i=(\nabla^2\mathbf{A})_i$ (Laplacien composante par composante). On obtient finalement
+\[
+\nabla\times(\nabla\times\mathbf{A})=\nabla(\nabla\cdot\mathbf{A})-\nabla^2\mathbf{A}.
+\]
+
+\medskip
+\textbf{Point de vue géométrique.} Dans un domaine simplement connexe, si $\nabla\cdot\mathbf{A}=0$ (champ solénoïdal),
+alors l’identité donne $\nabla\times(\nabla\times\mathbf{A})=-\nabla^2\mathbf{A}$ : le ``double rotationnel'' se comporte
+comme un Laplacien vectoriel, ce qui explique son rôle naturel dans les équations de propagation.
+\end{remarkbox}
+
+% =========================================================
+\subsection*{Solution générale de l’équation d’onde 1D}
+\addcontentsline{toc}{subsection}{Solution générale de l’équation d’onde 1D}
+% =========================================================
+
+On considère l’équation d’onde unidimensionnelle
+\[
+\frac{\partial^2 u}{\partial t^2}(x,t)=c^2\,\frac{\partial^2 u}{\partial x^2}(x,t),
+\qquad (x,t)\in\mathbb{R}\times\mathbb{R}.
+\]
+On cherche la forme générale des solutions suffisamment régulières (au moins $\mathcal{C}^2$).
+
+\paragraph{Changement de variables.}
+On introduit les variables caractéristiques (sans utiliser la méthode des caractéristiques comme outil conceptuel,
+simplement comme un changement de coordonnées) :
+\[
+\xi=x-ct,\qquad \eta=x+ct.
+\]
+On peut inverser :
+\[
+x=\frac{\xi+\eta}{2},\qquad t=\frac{\eta-\xi}{2c}.
+\]
+On pose alors $U(\xi,\eta)=u(x,t)=u\!\left(\frac{\xi+\eta}{2},\,\frac{\eta-\xi}{2c}\right)$.
+
+\paragraph{Règles de dérivation.}
+Par la règle de la chaîne,
+\[
+\frac{\partial}{\partial x}
+=\frac{\partial \xi}{\partial x}\frac{\partial}{\partial \xi}
++\frac{\partial \eta}{\partial x}\frac{\partial}{\partial \eta}
+=\frac{\partial}{\partial \xi}+\frac{\partial}{\partial \eta},
+\]
+et
+\[
+\frac{\partial}{\partial t}
+=\frac{\partial \xi}{\partial t}\frac{\partial}{\partial \xi}
++\frac{\partial \eta}{\partial t}\frac{\partial}{\partial \eta}
+=-c\,\frac{\partial}{\partial \xi}+c\,\frac{\partial}{\partial \eta}
+=c\!\left(\frac{\partial}{\partial \eta}-\frac{\partial}{\partial \xi}\right).
+\]
+
+On en déduit les dérivées secondes.
+D’abord,
+\[
+\frac{\partial^2}{\partial x^2}
+=\left(\frac{\partial}{\partial \xi}+\frac{\partial}{\partial \eta}\right)^2
+=\frac{\partial^2}{\partial \xi^2}+2\frac{\partial^2}{\partial \xi\partial \eta}+\frac{\partial^2}{\partial \eta^2}.
+\]
+Ensuite,
+\[
+\frac{\partial^2}{\partial t^2}
+=c^2\left(\frac{\partial}{\partial \eta}-\frac{\partial}{\partial \xi}\right)^2
+=c^2\left(\frac{\partial^2}{\partial \eta^2}-2\frac{\partial^2}{\partial \xi\partial \eta}+\frac{\partial^2}{\partial \xi^2}\right).
+\]
+
+\paragraph{Réduction de l’équation.}
+En substituant dans l’équation d’onde $u_{tt}=c^2u_{xx}$, on obtient
+\[
+c^2\left(U_{\eta\eta}-2U_{\xi\eta}+U_{\xi\xi}\right)
+=c^2\left(U_{\xi\xi}+2U_{\xi\eta}+U_{\eta\eta}\right).
+\]
+On simplifie par $c^2$ puis par $U_{\xi\xi}+U_{\eta\eta}$ des deux côtés :
+\[
+-2U_{\xi\eta}=+2U_{\xi\eta}
+\qquad\Longrightarrow\qquad
+U_{\xi\eta}=0.
+\]
+
+\paragraph{Intégration.}
+L’équation $U_{\xi\eta}=0$ signifie que $\partial_\eta(U_\xi)=0$, donc $U_\xi$ ne dépend pas de $\eta$.
+Il existe donc une fonction $F$ telle que
+\[
+U_\xi(\xi,\eta)=F(\xi).
+\]
+En intégrant par rapport à $\xi$,
+\[
+U(\xi,\eta)=\int F(\xi)\,\dd\xi + G(\eta)=f(\xi)+g(\eta),
+\]
+où $f$ est une primitive de $F$ et $g$ une fonction arbitraire de $\eta$.
+
+En revenant aux variables $(x,t)$, on obtient la forme générale :
+\[
+\boxed{\;u(x,t)=f(x-ct)+g(x+ct)\;}
+\]
+où $f$ et $g$ sont deux fonctions arbitraires (de classe $\mathcal{C}^2$ si l’on veut une solution classique).
+
+\begin{intuitionbox}
+Le terme $f(x-ct)$ représente une onde se propageant vers la droite à la vitesse $c$,
+tandis que $g(x+ct)$ se propage vers la gauche. La solution générale est la superposition
+de ces deux ondes progressives.
+\end{intuitionbox}
+
+% =========================================================
+\section*{Ondes : onde plane harmonique, relation de dispersion, vitesses de phase et de groupe}
+\addcontentsline{toc}{section}{Ondes : OPH, dispersion, vitesses de phase et de groupe}
+% =========================================================
+
+On approfondit ici le formalisme mathématique des ondes, en partant de l’équation d’onde
+et en introduisant systématiquement les solutions harmoniques, la relation de dispersion
+et la construction des paquets d’ondes (méthode de phase stationnaire / développement local).
+
+% =========================================================
+\subsection*{Équation d’onde et ansatz harmonique}
+\addcontentsline{toc}{subsection}{Équation d’onde et ansatz harmonique}
+% =========================================================
+
+En dimension 1, l’équation d’onde s’écrit
+\[
+\partial_{tt}u=c^2\,\partial_{xx}u.
+\]
+On cherche une solution complexe (on prendra la partie réelle à la fin) sous la forme
+\[
+u(x,t)=U\,e^{i(\omega t-kx)},\qquad U\in\mathbb{C}.
+\]
+Alors
+\[
+\partial_{tt}u=-\omega^2\,Ue^{i(\omega t-kx)},\qquad
+\partial_{xx}u=-k^2\,Ue^{i(\omega t-kx)}.
+\]
+En substituant dans l’équation, on obtient la condition de non-trivialité $U\neq 0$ :
+\[
+-\omega^2=-c^2k^2
+\qquad\Longrightarrow\qquad
+\boxed{\;\omega^2=c^2k^2\;}
+\quad\text{donc}\quad
+\omega=\pm ck.
+\]
+On retient souvent $\omega\ge 0$ et on laisse $k$ porter le signe de la direction de propagation.
+
+\paragraph{Notations usuelles.}
+\[
+k=\frac{2\pi}{\lambda},\qquad \omega=\frac{2\pi}{T},\qquad \nu=\frac{1}{T}=\frac{\omega}{2\pi}.
+\]
+La phase est $\Phi(x,t)=\omega t-kx+\varphi$ et l’onde réelle correspondante est
+\[
+u(x,t)=A\cos(\omega t-kx+\varphi),
+\qquad A=|U|.
+\]
+
+% =========================================================
+\subsection*{Vitesse de phase : déduction à partir des surfaces de phase constante}
+\addcontentsline{toc}{subsection}{Vitesse de phase}
+% =========================================================
+
+Les points de phase constante vérifient $\Phi(x,t)=\text{cste}$ :
+\[
+\omega t-kx=\text{cste}.
+\]
+En différentiant,
+\[
+\omega\,\dd t-k\,\dd x=0
+\qquad\Longrightarrow\qquad
+\frac{\dd x}{\dd t}=\frac{\omega}{k}.
+\]
+On définit ainsi la \textbf{vitesse de phase}
+\[
+\boxed{\;v_{\mathrm{ph}}=\frac{\omega}{k}\;}
+\]
+et, dans le cas non dispersif $\omega=ck$, on trouve $v_{\mathrm{ph}}=c$.
+
+\begin{pitfallbox}
+La vitesse de phase n’est pas toujours une vitesse de transport d’énergie / d’information.
+Dans certains milieux dispersifs, on peut même obtenir $v_{\mathrm{ph}}>c$ sans contradiction avec la causalité,
+car le transport du signal est gouverné par la vitesse de groupe.
+\end{pitfallbox}
+
+% =========================================================
+\subsection*{Relation de dispersion (cadre général) et dispersion}
+\addcontentsline{toc}{subsection}{Relation de dispersion et dispersion}
+% =========================================================
+
+Dans un milieu général (ou pour une EDP plus complexe), une onde plane harmonique
+$e^{i(\omega t-kx)}$ est solution si et seulement si $(\omega,k)$ vérifient une relation
+\[
+\boxed{\;\omega=\omega(k)\;}
+\]
+appelée \textbf{relation de dispersion}.
+Le milieu est dit
+\begin{itemize}
+  \item \textbf{non dispersif} si $\omega(k)$ est affine (typiquement $\omega=ck$) ;
+  \item \textbf{dispersif} sinon (différentes composantes en $k$ se propagent différemment).
+\end{itemize}
+
+% =========================================================
+\subsection*{Paquets d’ondes : construction et vitesse de groupe}
+\addcontentsline{toc}{subsection}{Paquets d’ondes et vitesse de groupe}
+% =========================================================
+
+Un signal réaliste est une superposition de modes :
+\[
+u(x,t)=\int_{\mathbb{R}} A(k)\,e^{i(\omega(k)t-kx)}\,\dd k,
+\]
+où $A(k)$ est concentré autour d’un $k_0$ (signal quasi-monochromatique).
+On écrit $k=k_0+\kappa$ et on développe $\omega(k)$ au voisinage de $k_0$ :
+\[
+\omega(k)=\omega_0+\omega'_0\,\kappa+\frac12\omega''_0\,\kappa^2+\cdots,
+\qquad
+\omega_0=\omega(k_0),\ \omega'_0=\omega'(k_0).
+\]
+Ainsi,
+\[
+u(x,t)=e^{i(\omega_0 t-k_0 x)}\int_{\mathbb{R}} A(k_0+\kappa)\,
+\exp\!\Big(i\big[\omega'_0 t-x\big]\kappa+\frac{i}{2}\omega''_0 t\,\kappa^2+\cdots\Big)\,\dd\kappa.
+\]
+
+\paragraph{Premier ordre : propagation de l’enveloppe.}
+Si le spectre est suffisamment étroit (ou si l’on se place à des temps pas trop grands),
+on néglige les termes $\mathcal{O}(\kappa^2)$ et on obtient
+\[
+u(x,t)\simeq e^{i(\omega_0 t-k_0 x)}\int_{\mathbb{R}} A(k_0+\kappa)\,
+e^{i(\omega'_0 t-x)\kappa}\,\dd\kappa.
+\]
+En posant
+\[
+\mathcal{G}(X)=\int_{\mathbb{R}} A(k_0+\kappa)\,e^{-iX\kappa}\,\dd\kappa
+\quad\text{(transformée de Fourier)},
+\]
+on reconnaît
+\[
+u(x,t)\simeq e^{i(\omega_0 t-k_0 x)}\,\mathcal{G}\big(x-\omega'_0 t\big).
+\]
+L’enveloppe $\mathcal{G}$ se déplace donc à la vitesse
+\[
+\boxed{\;v_{\mathrm{g}}=\omega'(k_0)=\frac{\dd\omega}{\dd k}(k_0)\;}
+\]
+appelée \textbf{vitesse de groupe}.
+
+\begin{intuitionbox}
+Dans l’approximation quasi-monochromatique, on obtient une onde
+\[
+u(x,t)\approx \underbrace{\mathcal{G}(x-v_{\mathrm{g}}t)}_{\text{enveloppe}}
+\;\times\;
+\underbrace{\cos(\omega_0 t-k_0 x)}_{\text{porteuse}},
+\]
+où la porteuse est associée à $v_{\mathrm{ph}}$ et l’enveloppe à $v_{\mathrm{g}}$.
+\end{intuitionbox}
+
+\paragraph{Second ordre : étalement du paquet (dispersion).}
+Le terme $\frac12\omega''_0\kappa^2$ induit une déformation de l’enveloppe au cours du temps :
+le paquet s’étale si $\omega''(k_0)\neq 0$.
+Pour illustrer cela, prenons un spectre gaussien
+\[
+A(k)=A_0\,\exp\!\Big(-\frac{(k-k_0)^2}{2\sigma_k^2}\Big).
+\]
+Alors l’intégrale précédente (au second ordre) reste calculable et montre que
+la largeur spatiale croît typiquement comme
+\[
+\sigma_x(t)\sim \sigma_x(0)\sqrt{1+\big(\omega''_0\,t\,\sigma_k^2\big)^2},
+\qquad \sigma_x(0)\sim \frac{1}{\sigma_k}.
+\]
+Ainsi, \textbf{la dispersion} ($\omega''_0\neq 0$) implique \textbf{l’étalement} d’un paquet d’ondes.
+
+% =========================================================
+\subsection*{Résumé mathématique : phase, groupe, dispersion}
+\addcontentsline{toc}{subsection}{Résumé : phase, groupe, dispersion}
+% =========================================================
+
+\begin{itemize}
+  \item \textbf{Vitesse de phase} :
+  \[
+  v_{\mathrm{ph}}=\frac{\omega}{k}
+  \quad\text{(vitesse des surfaces de phase constante)}.
+  \]
+  \item \textbf{Vitesse de groupe} :
+  \[
+  v_{\mathrm{g}}=\frac{\dd\omega}{\dd k}(k_0)
+  \quad\text{(vitesse de l’enveloppe d’un paquet centré en $k_0$)}.
+  \]
+  \item \textbf{Non-dispersion} : $\omega(k)=ck$ $\Rightarrow v_{\mathrm{ph}}=v_{\mathrm{g}}=c$ et pas d’étalement.
+  \item \textbf{Dispersion} : $\omega''(k_0)\neq 0$ $\Rightarrow$ étalement du paquet et, en général, $v_{\mathrm{ph}}\neq v_{\mathrm{g}}$.
+\end{itemize}
