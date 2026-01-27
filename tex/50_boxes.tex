@@ -1,0 +1,84 @@
+\tcbuselibrary{theorems, breakable}
+
+% Base style
+\tcbset{
+  enhanced,
+  breakable,
+  colback=XSoft,
+  arc=3mm,
+  boxrule=0.6pt,
+  left=10pt,right=10pt,top=8pt,bottom=8pt
+}
+
+% THEOREM
+\newtcbtheorem[
+  number within=chapter
+]{theorem}{Theorem}{
+  colframe=XBlue,
+  borderline west={2pt}{0pt}{XBlue},
+  fonttitle=\bfseries\color{XBlue}
+}{thm}
+
+% LEMMA
+\newtcbtheorem[
+  use counter from=theorem
+]{lemma}{Lemma}{
+  colframe=XBlue,
+  borderline west={2pt}{0pt}{XBlue},
+  fonttitle=\bfseries\color{XBlue}
+}{lem}
+
+% DEFINITION
+\newtcbtheorem[
+  use counter from=theorem
+]{definition}{Definition}{
+  colframe=XTeal,
+  borderline west={2pt}{0pt}{XTeal},
+  fonttitle=\bfseries\color{XTeal}
+}{def}
+
+% EXERCISE
+\newtcbtheorem[
+  use counter from=theorem
+]{exercise}{Exercise}{
+  colframe=XOrange,
+  borderline west={2pt}{0pt}{XOrange},
+  fonttitle=\bfseries\color{XOrange}
+}{ex}
+
+% INTUITION
+\newtcolorbox{intuitionbox}{
+  colframe=XPurple,
+  colback=XSoft,
+  borderline west={2pt}{0pt}{XPurple},
+  title=\textbf{Intuition}
+}
+
+% PITFALL
+\newtcolorbox{pitfallbox}{
+  colframe=XGray,
+  colback=XSoft,
+  borderline west={2pt}{0pt}{XGray},
+  title=\textbf{Pitfall}
+}
+
+% SOLUTIONS TOGGLE
+\newif\ifshowsolutions
+\showsolutionstrue
+
+\newenvironment{solution}{
+  \ifshowsolutions
+    \begin{tcolorbox}[
+      colframe=XPurple,
+      colback=XSoft,
+      borderline west={2pt}{0pt}{XPurple},
+      title=\textbf{Solution}
+    ]
+  \else
+    \expandafter\comment
+  \fi
+}{
+  \ifshowsolutions
+    \end{tcolorbox}
+  \fi
+}

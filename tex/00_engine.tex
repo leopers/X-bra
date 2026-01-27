@@ -1,0 +1,11 @@
+\usepackage{iftex}
+
+\ifLuaTeX
+  \usepackage{fontspec}
+  \setmainfont{TeX Gyre Pagella} % elegant book font
+  \setsansfont{TeX Gyre Heros}
+  \setmonofont{JetBrains Mono}
+\else
+  \usepackage[T1]{fontenc}
+  \usepackage{lmodern}
+\fi
