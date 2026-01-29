@@ -200,7 +200,7 @@ observation en $M$ (coordonnée $y$). La différence de marche vaut $\delta = r_
 \end{figure}
 
 \paragraph{Champ complexe en $M$.}
-On modélise l’onde issue de chaque fente par une onde sphérique (ou quasi-plane en champ lointain).
+On modélise l’onde issue de chaque fente par une onde cylindrique.
 Le champ complexe en $M$ s’écrit
 \[
 \mathcal{E}(M,t)=\mathcal{E}_1(M,t)+\mathcal{E}_2(M,t),
@@ -353,49 +353,61 @@ crée du rotationnel de $\mathbf{E}$ (Faraday), et une variation temporelle de $
 \end{intuitionbox}
 
 % =========================================================
-\subsection*{Remarque : pourquoi $\nabla\times(\nabla\times\mathbf{A})=\nabla(\nabla\cdot\mathbf{A})-\nabla^2\mathbf{A}$ ?}
-\addcontentsline{toc}{subsection}{Remarque : identité du \texorpdfstring{$\nabla\times(\nabla\times(\cdot))$}{rot(rot(.))}}
+\subsection*{Remarque : identité du double rotationnel}
 % =========================================================
 
 \begin{remarkbox}
-\textbf{Idée.} L’opérateur $\nabla\times(\nabla\times\cdot)$ mesure la partie ``tourbillonnaire du tourbillon''.
-En analyse vectorielle, tout champ suffisamment régulier se décompose (localement, et globalement sous hypothèses)
-en une partie gradient et une partie rotationnel (décomposition de Helmholtz). L’identité ci-dessous rend cette séparation explicite.
+\textbf{Énoncé.} Pour tout champ vectoriel $\mathbf{A}$ de classe $\mathcal{C}^2$ sur un ouvert de $\mathbb{R}^3$,
+on a l’identité fondamentale
+\[
+\nabla\times(\nabla\times\mathbf{A})=\nabla(\nabla\cdot\mathbf{A})-\nabla^2\mathbf{A},
+\]
+où $\nabla^2\mathbf{A}$ désigne le Laplacien appliqué composante par composante :
+$\nabla^2\mathbf{A}=(\nabla^2A_x,\nabla^2A_y,\nabla^2A_z)$.
 
 \medskip
-\textbf{Démonstration en coordonnées.}
-Soit $\mathbf{A}=(A_1,A_2,A_3)$ un champ $\mathcal{C}^2$. En notation indicielle, on utilise le symbole de Levi-Civita
-$\varepsilon_{ijk}$ et la convention de sommation d’Einstein.
-On a
+\textbf{Démonstration.}
+Écrivons $\mathbf{A}=(A_x,A_y,A_z)$.
+Par définition du rotationnel,
 \[
-(\nabla\times\mathbf{A})_i=\varepsilon_{ijk}\,\partial_j A_k.
+\nabla\times\mathbf{A}=
+\bigl(\partial_yA_z-\partial_zA_y,\ \partial_zA_x-\partial_xA_z,\ \partial_xA_y-\partial_yA_x\bigr).
 \]
-Donc
+On calcule ensuite $\nabla\times(\nabla\times\mathbf{A})$.
+On commence par sa première composante :
 \[
-(\nabla\times(\nabla\times\mathbf{A}))_i
-=\varepsilon_{ilm}\,\partial_l\bigl((\nabla\times\mathbf{A})_m\bigr)
-=\varepsilon_{ilm}\,\partial_l\bigl(\varepsilon_{mjk}\,\partial_j A_k\bigr).
+\bigl(\nabla\times(\nabla\times\mathbf{A})\bigr)_x
+=\partial_y\bigl((\nabla\times\mathbf{A})_z\bigr)-\partial_z\bigl((\nabla\times\mathbf{A})_y\bigr).
 \]
-On utilise l’identité
+En remplaçant $(\nabla\times\mathbf{A})_z=\partial_xA_y-\partial_yA_x$ et
+$(\nabla\times\mathbf{A})_y=\partial_zA_x-\partial_xA_z$, on obtient
 \[
-\varepsilon_{ilm}\varepsilon_{mjk}=\delta_{ij}\delta_{lk}-\delta_{ik}\delta_{lj},
+\bigl(\nabla\times(\nabla\times\mathbf{A})\bigr)_x
+=\partial_y(\partial_xA_y-\partial_yA_x)-\partial_z(\partial_zA_x-\partial_xA_z).
 \]
-où $\delta_{ij}$ est le symbole de Kronecker. Ainsi,
+Donc, en développant et en permutant les dérivées mixtes (hypothèse $\mathcal{C}^2$),
 \[
-(\nabla\times(\nabla\times\mathbf{A}))_i
-=(\delta_{ij}\delta_{lk}-\delta_{ik}\delta_{lj})\,\partial_l\partial_j A_k
-=\partial_k\partial_i A_k-\partial_j\partial_j A_i.
+\bigl(\nabla\times(\nabla\times\mathbf{A})\bigr)_x
+=\partial_x(\partial_yA_y+\partial_zA_z)-(\partial_{yy}A_x+\partial_{zz}A_x).
 \]
-Or $\partial_k A_k=\nabla\cdot\mathbf{A}$, donc $\partial_k\partial_i A_k=\partial_i(\nabla\cdot\mathbf{A})$,
-et $\partial_j\partial_j A_i=(\nabla^2\mathbf{A})_i$ (Laplacien composante par composante). On obtient finalement
+Or $\partial_yA_y+\partial_zA_z = (\nabla\cdot\mathbf{A})-\partial_xA_x$, donc
+\[
+\bigl(\nabla\times(\nabla\times\mathbf{A})\bigr)_x
+=\partial_x(\nabla\cdot\mathbf{A})-\nabla^2A_x.
+\]
+On procède de façon identique pour les composantes $y$ et $z$ (même structure de calcul),
+ce qui donne au final
+\[
+\nabla\times(\nabla\times\mathbf{A})
+=\bigl(\partial_x(\nabla\cdot\mathbf{A})-\nabla^2A_x,\ 
+       \partial_y(\nabla\cdot\mathbf{A})-\nabla^2A_y,\ 
+       \partial_z(\nabla\cdot\mathbf{A})-\nabla^2A_z\bigr),
+\]
+c’est-à-dire bien
 \[
 \nabla\times(\nabla\times\mathbf{A})=\nabla(\nabla\cdot\mathbf{A})-\nabla^2\mathbf{A}.
 \]
 
-\medskip
-\textbf{Point de vue géométrique.} Dans un domaine simplement connexe, si $\nabla\cdot\mathbf{A}=0$ (champ solénoïdal),
-alors l’identité donne $\nabla\times(\nabla\times\mathbf{A})=-\nabla^2\mathbf{A}$ : le ``double rotationnel'' se comporte
-comme un Laplacien vectoriel, ce qui explique son rôle naturel dans les équations de propagation.
 \end{remarkbox}
 
 % =========================================================
