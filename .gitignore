@@ -1,2 +1,63 @@
-build
+# =========================
+# LaTeX auxiliary files
+# =========================
+
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.synctex(busy)
+*.nav
+*.snm
+*.vrb
+
+# =========================
+# Bibliography / citations
+# =========================
+
+*.bbl
+*.blg
+*.bcf
+*.run.xml
+
+# =========================
+# Index / glossary
+# =========================
+
+*.idx
+*.ilg
+*.ind
+*.glg
+*.glo
+*.gls
+*.acn
+*.acr
+*.alg
+
+# =========================
+# LuaLaTeX specific
+# =========================
+
+*.lua
+*.luac
+
+# =========================
+# Temporary / editor files
+# =========================
+
+*~
+*.swp
+*.swo
 .DS_Store
+Thumbs.db
+
+# =========================
+# Build directories
+# =========================
+
+build
