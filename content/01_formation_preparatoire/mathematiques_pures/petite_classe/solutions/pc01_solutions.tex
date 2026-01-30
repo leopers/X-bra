@@ -1,0 +1,98 @@
+% =========================================================
+\section*{Algèbre Linéaire}
+\addcontentsline{toc}{section}{Algèbre Linéaire}
+% =========================================================
+
+\subsection*{Exercice 1}
+
+Comme $\ker f$ est un sous-espace vectoriel de $E$, on peut choisir une base de $\ker f$: $B_{\ker} = (v_1, v_2, \cdots, v_k)$. Complétons la base, avec des vecteurs $u_i$ afin de construire une base de $E$:
+
+\[B_E = (v_1, v_2, \cdots, v_k, u_{k+1}, \cdots, u_n)\]
+
+Maintenant, voyez que pour chaque vecteur $w$ appartenant à l'image de $f$, on peut l'écrire comme:
+
+\[w = f(v_E) = f\left(\lambda_1 v_1 + \lambda_2 v_2 + \cdots + \lambda_k v_k + \lambda_{k+1} u_{k+1} + \cdots + \lambda_n u_n\right)\]
+
+Mais, $f(v_i) = 0,\ i \le k$, alors:
+
+\[\begin{split}
+	w &= f\left(\lambda_{k+1} u_{k+1} + \cdots + \lambda_n u_n\right) \\
+	 &= \lambda_{k+1} f(u_{k+1}) + \cdots + \lambda_nf(u_n)
+	\end{split}\]
+
+Donc on voie qu'ils sont combinaisons linéaires du ensemble $A = (f(u_{k+1}), \cdots, f(u_n)$ (on dit que $A$ engendre $\imag f$). Mais $A$ est aussi linéairement indépendant, car $w = 0$ si et seulement si:
+
+\[\lambda_{k+1} u_{k+1} + \cdots + \lambda_n u_n = v' \in \ker f\]
+
+Mais comme $v' \in \ker f$ donc $v' = \alpha_1 v_1 + \cdots + \alpha_kv_k$, donc:
+
+\[-\alpha_1 v_1 - \cdots - \alpha_k v_k + \lambda_{k+1} u_{k+1} + \cdots + \lambda_n u_n = 0\]
+
+Mais, comme $B_E$ est une base de $E$, cela n'arrive que si $\alpha_1 = \cdots = \alpha_k = \lambda_{k+1} = \cdots = \lambda_n = 0$.
+
+Alors $A$ est une base de $\imag f$, donc:
+
+\[\dim \ker f + \dim A = \dim E\]
+
+\[\dim \ker f + \dim \imag f = \dim E\ \QED\]
+
+
+
+\subsection*{Exercice 2}
+
+On doit demontrer que $1 \implies 2 \implies 3 \implies 1$ (ou quelque autre combinaison cyclique):
+
+
+\begin{enumerate}
+	\item $1 \implies 2$
+	
+	C'est direct que $\imag f^2 \subset \imag f$, donc on doit montrer que $\imag f \subset \imag f^2$.
+	
+	Soit $v \in \imag f$ on a que: $v = f(u)$. Comme l'espace $V = \ker f \oplus \imag f$, on peut dire que $u = x + f(w)$ où $x \in \ker f $ et $w \notin \ker f$. $v = f(u) = f(x + f(w)) = f(f(w)) \in \imag f^2$. Donc $\imag f \subset \imag f^2\ \QED$.
+	
+	
+	\item $2 \implies 3 $
+	
+	C'est direct que $\ker f \subset \ker f^2$.
+	
+	Pour le théorème du rang (démontré dans l'exercice 1):
+	
+	\[\begin{cases}
+		\dim \imag f + \dim \ker f = n \\
+		\dim \imag f^2 + \dim \ker f^2 = n 
+	\end{cases}\]
+	
+	Mais comme $\dim \imag f^2 = \dim \imag f$ alors $\dim \ker f = \dim \ker f^2$, donc:
+	
+	\[\ker f = \ker f^2\ \QED\] 
+	
+	
+	\item $3 \implies 1$
+	
+	Si l'on montre que $\ker (f) \cap \imag f = \{0\}$, par le théorème du rang, on montre aussi que $\ker f + \imag f = \ker(f) \oplus \imag f = V$.
+	
+	En supposant $v \in \ker f$ et $v \in \imag f$, on a que
+	
+	
+	\[\begin{cases}
+		f(v) = 0 \\
+		v = f(u)\ |\ $u \in V$
+	\end{cases}\].
+	
+	\[\implies f(f(u)) = 0\]
+	
+	Alors on voit que $u \in \ker f^2 = \ker f\ \implies f(u) = 0$, donc $v = 0$. Ainsi $\ker (f) \cap \imag f = \{0\}$ $\blacksquare$.
+	
+\end{enumerate}
+
+
+
+\subsection*{Exercice 3}
+
+
+Par le théorème du rang: $u_n = v_n$, de façon qu'on ne doit analyser qu'une suite.
+
+L'intuition 
+
+
+

@@ -1,0 +1,36 @@
+\subsection*{Feuille n°1 — Algèbre linéaire}
+
+\textbf{Exercice 1.} Soit $E$ et $F$ deux espaces vectoriels de dimension finie. Soit $f$ une application linéaire de $E$ dans $F$. Montrer que
+\[ \dim \imag f + \dim \ker f = \dim E. \]
+
+\textbf{Exercice 2.} Soit $V$ un espace vectoriel de dimension $n$ et $f \in \End(V)$. Montrer que les assertions suivantes sont équivalentes :
+\begin{enumerate}
+    \item $\ker(f) \oplus \imag(f) = V$ ;
+    \item $\imag(f) = \imag(f^2)$ ;
+    \item $\ker(f) = \ker(f^2)$.
+\end{enumerate}
+
+\textbf{Exercice 3.} Soit $E$ un espace vectoriel de dimension finie et $f \in \mathcal{L}(E)$. Montrer que les suites $(u_n)$ et $(v_n)$ définies par
+\[ u_n = \dim (\imag f^n) - \dim (\imag f^{n+1}), \]
+\[ v_n = \dim (\ker f^{n+1}) - \dim (\ker f^n) \]
+sont des suites positives, décroissantes qui tendent vers $0$.
+
+\textbf{Exercice 4.} Soit $\C_n[X]$ l'espace vectoriel des polynômes à coefficients dans $\C$ de degré inférieur ou égal à $n$. On considère l'application linéaire $\varphi$ qui à $P(X) \in \C_n[X]$ associe $P(X+1) - P(X)$.
+
+Déterminer son noyau $\ker(\varphi)$ et son image $\imag(\varphi)$.
+
+\textbf{Exercice 5.} Soient $f$ et $g$ deux applications linéaires de $\R^n$ dans $\R$. Montrer que
+\begin{enumerate}
+    \item[(a)] $\ker(f) = \ker(g)$ (égalité des noyaux)
+    \item[(b)] \textit{si et seulement si} il existe $\lambda \in \R, \lambda 
+eq 0$ tel que $f = \lambda g$.
+\end{enumerate}
+
+\textbf{Exercice 6.} Soit $m \in \R$ et $A(m) = \begin{pmatrix} -1 & 0 & 0 \\ 2 & m & -2 \\ 2 - m & m - 2 & m \end{pmatrix}$
+\begin{enumerate}
+    \item Déterminer le polynôme caractéristique et le polynôme minimal de $A(m)$.
+    \item Pour quelles valeurs de $m$ la matrice $A(m)$ est-elle diagonalisable ?
+    \item Lorsque $A(m)$ est diagonalisable, trouver une matrice $P$ inversible et une matrice diagonale $D$ telles que $A(m) = PDP^{-1}$.
+\end{enumerate}
+
+\textbf{Exercice 7.} Montrer que la matrice $M(a) = \begin{pmatrix} 2 & 0 & 1 & -a \\ 1 & 1 & 0 & 1 \\ a & -1 & 0 & 1 \\ -1 & 0 & 1 & 2a \end{pmatrix}$ est diagonalisable si et seulement si $a = 1$. Dans ce cas trouver $P$ tel que $P^{-1} M(1) P$ soit une matrice diagonale que l'on déterminera.
