@@ -8,7 +8,46 @@
 \newcommand{\End}{\text{End}}
 
 
-\newcommand*{\QED}{\null\nobreak\hfill\ensuremath{\blacksquare}}%
+\newcommand*{\QED}{\null\nobreak\hfill\ensuremath{\blacksquare}}
+
+
+\usepackage{expl3}
+
+\ExplSyntaxOn
+
+\seq_new:N \l_diag_seq
+
+\NewDocumentCommand{\diagonal}{m}
+{
+	\diag_matrix:n { #1 }
+}
+
+\cs_new_protected:Nn \diag_matrix:n
+{
+	\seq_set_split:Nnn \l_diag_seq { } { #1 }
+	\begin{pmatrix}
+		\int_step_inline:nn { \seq_count:N \l_diag_seq }
+		{
+			\diag_matrix_row:nn { ##1 } { \seq_item:Nn \l_diag_seq { ##1 } }
+			\int_compare:nT { ##1 < \seq_count:N \l_diag_seq } { \\ }
+		}
+	\end{pmatrix}
+}
+
+\cs_new:Nn \diag_matrix_row:nn
+{
+	\int_step_inline:nn { \seq_count:N \l_diag_seq }
+	{
+		\int_compare:nTF { ##1 = #1 }
+		{ #2 }
+		{ 0 }
+		\int_compare:nT { ##1 < \seq_count:N \l_diag_seq } { & }
+	}
+}
+
+\ExplSyntaxOff
+
+
 
 \DeclareMathOperator{\Var}{Var}
 \DeclareMathOperator{\Cov}{Cov}
