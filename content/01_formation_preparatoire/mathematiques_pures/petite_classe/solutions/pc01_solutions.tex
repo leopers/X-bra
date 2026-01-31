@@ -254,6 +254,88 @@ Et considérant que $\dim \imag f^{k+1}$ aussi converge (par la même raison d'�
 	\end{pmatrix}\]
 	
 	
+	\subsection*{Exercice 7}
+	
+	En calculant son polynôme caractéristique
+	
+	\[\det (M(a) - x\cdot \id) = \begin{pmatrix}
+		2 - x && 0 && 1 - a \\
+		-1 && 1 - x && a - 1 \\
+		a-1 && 0 && 2a - x 
+	\end{pmatrix} = (1-x)(x - a - 1)^2\]
+	
+	Donc on a les valeurs propres $\lambda_1 = 1$ et $\lambda_2 = a + 1$, où $\lambda_2$ a multiplicité arithmétique $2$, donc on a besoin de déterminer si la multiplicité géométrique est aussi $2$, donc on cherchera les vecteurs $v = [x\ y\ z]\ | M(a)v = (a+1)v$:
+	
+	\[\begin{bmatrix}
+		(a+1)x \\ (a+1)y \\ (a+1)z
+	\end{bmatrix} = \begin{pmatrix}
+	2 && 0 && 1-a \\
+	-1 && 1 && a-1 \\
+	a-1 && 0 && 2a
+	\end{pmatrix}\begin{bmatrix}
+	x \\ y \\z
+	\end{bmatrix}\]
+	
+	On trouve que $(a-1)(x+z) = a(x+y) = 0$. Alors on va considérer les cas $a = 0, a = 1$ et $a \in \R\backslash\{0, 1\}$:
+	
+	\begin{enumerate}
+		\item $a = 1$
+		
+		En ce cas $\lambda_1 \neq \lambda_2$ et on a que $x + y = 0$, de façon que le sous-espace propre de $\lambda_2$ a dimension\footnote{On peut choisir une base $B = ([1, -1, 0], [0, 0, 1])$ par exemple.} 2, qui, avec le sous-espace propre associé à $\lambda_1$, engendrent $\R^3$. \textbf{Donc la matrice est diagonalisable}.
+		
+		
+		\item $a = 0$
+		
+		En ce cas $\lambda_1 = \lambda_2 = 1$, mais on la restriction pour les vecteurs propres: $x + z = 0$. Mais cette restriction permet un sous-espace de dimension 2 qui n'est pas capable d'engendrer $\R^3$. \textbf{Donc la matrice n'est pas diagonalisable}.
+		
+		
+		\item $a \neq 0$ et $a \neq 1$
+		
+		En ce cas $\lambda_1 \neq \lambda_2$, et on a que $x + y = x + z = 0$. Mais cette restriction permet un sous-espace de dimension 1, qui même avec le sous-espace propre associé à $\lambda_1$ n'engendrent pas le $\R^3$. \textbf{Donc la matrice n'est pas diagonalisable}.
+	\end{enumerate}
+	
+	
+	Dans le cas $a = 1$:
+	
+	\[P = \begin{pmatrix}
+		0 && 1 && 0\\
+		1 && -1 &&0 \\
+		0 && 0 && 1
+	\end{pmatrix}\]
+	
+	et 
+	
+	\[D = \diagonal{1 2 2}\]
+	
+	
+	\subsection*{Exercice 8}
+	
+	\begin{enumerate}
+		\item D'abord on a que $B = (\varphi_0, \cdots, \varphi_n)$ et, comme $B$ a $n+1 = \dim E^*$ éléments, si l'on preuve que $B$ est linéairement indépendante, on montre qu'elle est une base de $E^*$.
+		
+		Alors, supposons que $\lambda_0 \varphi_0 + \cdots + \lambda_n \varphi_n = 0$, donc on a que:
+		
+		\[\left(\sum_{i=0}^n\lambda_i \varphi_i\right)(P) = 0\ (\forall P \in \R_n[X])\ \implies \sum_{i  = 0}^n \lambda_i P(a_i) = 0\ (\forall P \in \R_n[X])\] 
+		
+		Comme $a_i \neq a_j$ $\forall i \neq j$, on peut choisir des différents polynômes $Q_k(x)$ tels que $a_i$ sont racines de $Q_k$ sauf $a_k$ où $Q_k(a_k) = 1$:
+		
+		\[Q_k(x) = \alpha_k \cdot (x - a_0)\cdots(x- a_{k-1})(x-a_{k+1})\cdots (x-a_n)\]
+		
+		où $\alpha_k \in \R$ est la constant qui rend $Q_k(a_k) = 1$.
+		
+		De cette façon on montre que chaque $\lambda_k = 0$. Donc $B$ est base de $E^*$.
+		
+		\item Pour la définition de l'espace dual: 
+		\[\phi_i(P_j) = P_j(a_i) = \delta_{i, j} = \begin{cases}
+			1,\ \text{ si } i = j\\
+			0,\ \text{ si } i \neq j
+		\end{cases}\]
+		
+		On peut voir que les polynômes $Q_k(x)$ présentés dans l'item antérieur satisfont ces conditions. Pour montrer que $B = (Q_0, \cdots, Q_n)$ forme une base de $E$, il suffit de montrer que cet ensemble est linéairement indépendant, étant donné que $B$ contient $n+1 = \dim E$ éléments. Mais comme seulement $Q_i(x)$ n'est pas nul en $x = a_i$, il est claire que $B$ est L.I.		
+		
+	\end{enumerate}
+	
+	
 	
 \end{enumerate}
 
