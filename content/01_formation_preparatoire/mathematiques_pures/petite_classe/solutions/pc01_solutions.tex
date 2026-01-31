@@ -90,9 +90,173 @@ On doit demontrer que $1 \implies 2 \implies 3 \implies 1$ (ou quelque autre com
 \subsection*{Exercice 3}
 
 
-Par le théorème du rang: $u_n = v_n$, de façon qu'on ne doit analyser qu'une suite.
+Par le théorème du rang: $u_n = v_n$, de façon qu'on ne doit analyser qu'une suite. Pour cela, on utilisera l'application suivante:
 
-L'intuition 
+\[g: \imag f^n \to \imag f^{n+1}\ |\ g(x) = f(x)\]
+
+Voyez que $g(x)$ est bien définie puisque si $v \in \imag f^n$ ($v = f^n(u)\ |\ u \in E$), donc $g(v) = f^{n+1}(u) \in \imag f^{n+1}$. Voyez aussi que $\ker g = \ker f \cap \imag f^{n}$, car son noyau sont tous les éléments du noyau de $f$ qui font partie de $\imag f^{n}$.
+
+Alors:
+
+\[\dim \ker g + \dim \imag g = \dim \imag f^n\]
+
+Comme $\dim \imag g = \dim \imag f^{n+1}$:
+
+\[\dim (\ker f \cap \imag f^{n}) = \dim \imag f^n - \dim \imag f^{n+1} = u_n\]
+
+De cette façon, comme $u_n$ est la dimension d'un espace vectoriel, il sera $u_n \ge 0$. Pour montrer qu'il est décroissant, il suffit de voir que $\ker f \cap \imag f^{n+1} \subset \ker f \cap \imag f^n$, donc la dimension ne peut qu'être constante ou décroître. Donc, étant une suite monotone et bornée, elle converge.
+
+Or, observant la somme suivante:
+
+\[U_k = \sum_{i=1}^k u_i = \dim \imag f - \dim \imag f^{k+1}\]
+
+Et considérant que $\dim \imag f^{k+1}$ aussi converge (par la même raison d'être une suite monotone bornée), on peut conclure que $U_k$ converge aussi. Donc il faut que $u_n \to 0$ car s'il n'était pas le cas, la somme divergerait.
+
+
+
+\subsection*{Exercice 4}
+
+\begin{enumerate}
+	\item $P(x) \in \ker \varphi \implies P(x+1) = P(x)$.  Si c'est le cas, on peut analyser le polynôme dans un sous-ensemble du domaine $A = \{a+ib\ |\ a \in [0, 1[,\ b \in \R\}$ car le reste du domaine pourrait être défini en fonction de cette partie\footnote{Parce que $P(x) = P\left( x - \lfloor x \rfloor \right)$, par induction.}.
+	
+	S'il y avait quelque racine $r$ de $P(x)\ | r \in A$, donc le polynôme aurait un nombre infini de racines ($r + n\ \forall n \in \Z$ seraient racines), ce qui n'est pas possible, sauf si $P(x) = 0$. Et si $P(x)$ n'a pas de racines en $A$ $\implies$ $P(x)$ n'a pas de racines dans tout son domaine $\implies$ $P(x)$ est constante.
+	
+	Donc $\ker \varphi = \{P(x) = c\ |\ c \in \C\}$.
+	
+	
+	\item On peut choisir une base de $\C_n[X]:\ (1, x, x^2, ..., x^n)$ pour voir que: 
+	
+	\[\begin{cases}
+		\varphi(1) = 0 \\
+		\varphi(x) = 1 \\
+		\varphi(x^2) = 2x + 1 \\
+		\vdots \\
+		\varphi(x^n) = \binom{n}{1} x^{n-1} + \binom{n}{2} x^{n-2} + \cdots + \binom{n}{n-1}x + \binom{n}{n}
+	\end{cases}\]
+	
+	Voyez que $(\varphi(x), \phi(x^2), \cdots, \varphi(x^n))$ est linéairement indépendante, car chaque terme $\varphi(x^i)$ contrôle le coefficient de $x^{i-1}$. Et, d'ailleurs:
+	
+	\[\imag \varphi = \{P(X) \in \C_{n-1}[X]\}\]
+	
+\end{enumerate}
+
+
+
+
+\subsection*{Exercice 5}
+
+\begin{enumerate} 
+	\item $(a) \implies (b)$
+	
+	Si $f = 0$ ou $g = 0$ c'est évident, donc soit $f != 0$ et alors $g != 0$ par $(a)$.
+	
+	Comme $\dim \ker f + \dim \imag f = n$ et $\dim \imag f = 1$, puisque $\imag f \subset \R$ et $\imag f != \{0\}$, on a que $\dim \ker f = \dim \ker g = n-1$. Alors, on peut construire une base $B$ de $\R^n$ telle que $B = (u_1, \cdots, u_{n-1}, v_n)$ où $u_i \in \ker f$ et $f(v_n), g(v_n) \neq 0$. 
+	
+	D'ailleurs soit $x \in \R_n\ |\ x = \lambda_1 u_1 + \cdots + \lambda_n v_n$:
+	
+	\[\begin{cases}
+		f(x) = \lambda_n f(v_n) \\
+		g(x) = \lambda_n g(v_n)
+	\end{cases}\] 
+	
+	\[\implies f(x) = \frac{f(v_n)}{g(v_n)} g(x)\]
+	
+	\item $(b) \implies (a)$
+	
+	Si $v \in \ker f$: $f(v) = \lambda g(v) = 0 \implies g(v) = 0 \implies v \in \ker g$, donc $\ker f \subset \ker g$. Si $u \in \ker g$: $g(u) = \dfrac{1}{\lambda} f(u) = 0\ \implies f(u) = 0 \implies u \in \ker f$, donc $\ker g \subset \ker f$.
+	
+	Alors $\ker f = \ker g$.
+	
+\end{enumerate}
+
+
+
+
+
+
+\subsection{Exercice 6}
+
+
+\begin{enumerate}
+	\item $P(x) = \det(M - x\cdot \id)$
+	
+	\[\det\begin{pmatrix}
+		1 - x && 0 && 1 \\
+		-1 && 2-x && 1 \\
+		2-m && m-2 && m-x \\
+	\end{pmatrix} = (1-x)(2-x)(m-x)\]
+	
+	Le polynôme minimal dépendra si $m = 1$ ou $m=2$ et si pour chaque un de ces valeurs la dimension de l'espace propre sera unique ou non, alors on verra après.
+	
+	
+	\item Si $m \in \R \backslash \{1, 2\}$, la matrice est diagonalisable, puisqu'elle a 3 valeurs propres distincts. Maintenant pour:
+	
+	\begin{enumerate}
+		\item $m = 1$
+		
+		\[A(1) = \begin{pmatrix}
+			1 && 0 && 1 \\
+			-1 && 2 && 1 \\
+			1 && -1 && 1 \\
+		\end{pmatrix}\]
+		
+		et, en calculant les vecteurs propres:
+		
+		\[Av = v = \begin{bmatrix}
+			a \\
+			b \\
+			c \\
+		\end{bmatrix}\]
+		
+		on arrive à la condition que $a = b$ et $c = 0$, de manière que $v = \lambda [1, 1, 0]$. Comme il n'y a que 1 dégrée de liberté, on arrive que $\dim E(1) < m(1) = $ la multiplicité polynômial de la racine. Donc il faut que $m \neq 1$.
+		
+		
+		\item $m = 2$
+		
+		\[A(2) = \begin{pmatrix}
+			1 && 0 && 1 \\
+			-1 && 2 && 1 \\
+			0 && 0 && 2 
+		\end{pmatrix}\]
+		
+		En calculant les vecteurs propres on arrive que $a = c$ sans aucune restriction sur $b$, donc on a 2 dégrées de liberté pour choisir un vecteur propre: $v = \lambda_1 [1, 0, 1] + \lambda_2 [0, 1, 0]$. Donc même si $m = 2$ $A(m)$ est diagonalisable.
+		
+		
+	\end{enumerate}
+	
+	De cette manière la condition cherchée est $m \in \R \backslash \{1\}$.
+	
+	
+	\item Pour $m \neq 2$, les valeurs propres sont $1, 2, m$. Comme on a vu avant $v(\lambda = 1) = [1, 1, 0]$. Pour $v(\lambda = 2)$ on trouve qu'un vecteur propre associé est $[1, 0, 1]$. Pour $v(\lambda = m)$ on fait le même processus pour trouver une solution égale à $[1, 1, m-1]$:
+	
+	
+	\[D = \diagonal{1 2 m}\]
+	
+	et 
+	
+	\[P = \begin{pmatrix}
+		1 && 1 && 1 \\
+		1 && 0 && 1 \\
+		0 && 1 && m-1 \\
+	\end{pmatrix}\]
+	
+	
+	Pour $m = 2$, on va utiliser les résultats déjà montrés:
+	
+	\[D = \diagonal{1 2 2}\]
+	
+	et
+	
+	\[P = \begin{pmatrix}
+		1 && 1 && 0 \\
+		1 && 0 && 1 \\
+		0 && 1 && 0 \\
+	\end{pmatrix}\]
+	
+	
+	
+\end{enumerate}
+
 
 
 
