@@ -40,3 +40,57 @@ si et seulement si
 \end{enumerate}
 
 \textbf{Exercice 7.} Montrer que la matrice $M(a) = \begin{pmatrix} 2 & 0 & 1 & -a \\ 1 & 1 & 0 & 1 \\ a & -1 & 0 & 1 \\ -1 & 0 & 1 & 2a \end{pmatrix}$ est diagonalisable si et seulement si $a = 1$. Dans ce cas trouver $P$ tel que $P^{-1} M(1) P$ soit une matrice diagonale que l'on déterminera.
+
+\textbf{Exercice 8.} Soit $E=\R_n[X]$ l’espace vectoriel des polynômes de degré inférieur ou égal à $n$.  
+Soient $a_0,a_1,\dots,a_n$ des nombres réels deux à deux distincts.  
+Pour $j\in\{0,\dots,n\}$, on note $\varphi_j\in E^{*}$ défini par $\varphi_j(P)=P(a_j)$.
+
+\begin{enumerate}
+	\item Montrer que $(\varphi_0,\dots,\varphi_n)$ est une base de $E^{*}$.
+	\item Trouver la base $(P_0,P_1,\dots,P_n)$ de $E$ dont la base duale est $(\varphi_0,\dots,\varphi_n)$.
+\end{enumerate}
+
+\textbf{Exercice 9.} Soit $V$ un espace vectoriel de dimension $d$ sur $\C$ et $f$ un endomorphisme de $V$. On note $C_f$ son polynôme caractéristique.
+
+I. Soit $v$ un vecteur non nul de $V$. Soit $n$ le plus grand entier tel que la famille $(v,f(v),\dots,f^{n-1}(v))$ soit libre.  
+On note $W$ le sous-espace vectoriel engendré par cette famille et on pose
+\[
+f^{n}(v)=a_0v+a_1f(v)+\dots+a_{n-1}f^{n-1}(v)
+\]
+
+\begin{enumerate}
+	\item Montrer que $W$ est stable par $f$ (c’est-à-dire $f(W)\subset W$). On note alors $f_W$ la restriction de $f$ à $W$.
+	\item Quel est le polynôme caractéristique $C_{f_W}$ de $f_W$ ?
+	\item Montrer que $C_{f_W}(f_W)=0$.
+	\item Montrer que $C_{f_W}$ divise $C_f$.
+\end{enumerate}
+
+II. Déduire de la première partie que $C_f(f)=0$ (Théorème de Cayley-Hamilton).
+
+\textbf{Exercice 10.} Soit $V$ un espace vectoriel de dimension $n$.  
+Soient $f$ et $g$ deux endomorphismes diagonalisables de $V$ qui commutent (c’est‑à‑dire $f\circ g=g\circ f$).
+
+\begin{enumerate}
+	\item Soit $E$ un sous‑espace propre de $f$. Montrer que $E$ est stable par $g$ (c’est‑à‑dire $g(E)\subseteq E$).
+	\item Montrer que la restriction de $g$ à $E$ est un endomorphisme diagonalisable de $E$.
+	\item Montrer que $f$ et $g$ sont diagonalisables dans une même base.
+	\item \emph{(difficile)} Soit $(f_i)_{i\in I}$ une famille d’endomorphismes diagonalisables de $V$. On suppose que les $f_i$ commutent deux à deux.  
+	Montrer par récurrence sur $\dim(V)$ que les $f_i$, pour $i\in I$, sont diagonalisables dans une même base.
+\end{enumerate}
+
+\textbf{Exercice 11.} Soit $G$ un sous‑groupe fini de $\mathrm{GL}(n,\mathbf{R})$.  
+On suppose que tout élément $A$ de $G$ satisfait $A^{2}=I_n$ où $I_n$ est la matrice identité.  
+Montrer que $G$ a au plus $2^{\,n}$ éléments.
+
+\textbf{Exercice 12.} Soit $V$ un espace vectoriel de dimension $n$ et $f$ un endomorphisme de $V$.
+
+\begin{enumerate}
+	\item Montrer que $f$ est nilpotent (c’est‑à‑dire qu’il existe $r\in\mathbf{N}^{*}$ tel que $f^{r}=0$) si et seulement si son polynôme caractéristique est $P(T)=(-T)^{n}$.
+	\item On suppose que $f$ est nilpotent et $f^{\,n-1}\neq 0$.
+	\begin{enumerate}
+		\item Montrer qu’il existe $v\in V$ tel que $v,\;f(v),\;f^{2}(v),\dots,f^{\,n-1}(v)$ soit une base de $V$.
+		\item Écrire la matrice de $f$ dans la base $(v,f(v),f^{2}(v),\dots,f^{\,n-1}(v))$. En déduire le rang de $f$.
+		\item Montrer que $g$ commute à $f$ si et seulement si il existe un polynôme $P\in\mathbf{R}[X]$ tel que $g=P(f)$.
+	\end{enumerate}
+\end{enumerate}
+

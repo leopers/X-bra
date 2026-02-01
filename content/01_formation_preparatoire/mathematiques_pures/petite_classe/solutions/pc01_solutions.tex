@@ -174,7 +174,7 @@ Et considérant que $\dim \imag f^{k+1}$ aussi converge (par la même raison d'�
 
 
 
-\subsection{Exercice 6}
+\subsection*{Exercice 6}
 
 
 \begin{enumerate}
@@ -253,6 +253,7 @@ Et considérant que $\dim \imag f^{k+1}$ aussi converge (par la même raison d'�
 		0 && 1 && 0 \\
 	\end{pmatrix}\]
 	
+\end{enumerate}
 	
 	\subsection*{Exercice 7}
 	
@@ -335,10 +336,212 @@ Et considérant que $\dim \imag f^{k+1}$ aussi converge (par la même raison d'�
 		
 	\end{enumerate}
 	
+
+
+\subsection*{Exercice 9}
+
+\textbf{Partie I}
+
+\begin{enumerate}
+	\item Soit $w \in W$ tel que $w = \lambda_0v + \cdots + \lambda_{n-1}f^{n-1}(v)$. En appliquant $f$ sur $w$:
+	
+	\[\begin{split}f(w) &= \lambda_0 f(v) + \cdots + \lambda_{n-2}f^{n-1}(v) + \lambda_{n-1}f^n(v) \\
+		&= \lambda_{n-1}a_0 v + (\lambda_{n-1}a_1 + \lambda_0) f(v) + \cdots + (\lambda_{n-1}a_{n-1} + \lambda_{n-2})f^{n-1}(v) \\
+		\therefore f(w) &\in W\ \forall w \in W
+	\end{split}\]
+	
+	\item On peut visualiser la matrice associée à cette application sur $W$ par rapport à la base $B = (v, f(v), \cdots, f^{n-1}(v))$:
 	
 	
+	\[M(f_W) = \begin{pmatrix}
+		0 && 0 && 0 && \cdots && a_0 \\
+		1 && 0 && 0 && \cdots && a_1 \\
+		0 && 1 && 0 && \cdots && a_2 \\
+		\vdots && \vdots && \vdots && \ddots && \vdots \\
+		0 && 0 && 0 && \cdots && a_{n-1}
+	\end{pmatrix}\]
+	
+	Et, en sachant que $C_{f_W}(x) = \det(x \cdot \id_W-M(f_W))$:
+	
+	\[C_{f_W}(x) = \det \begin{bmatrix}
+		x && 0 && 0 && \cdots && -a_0 \\
+		-1 && x && 0 && \cdots && -a_1 \\
+		0 && -1 && x && \cdots && -a_2 \\
+		\vdots && \vdots && \vdots && \ddots && \vdots \\
+		0 && 0 && 0 && \cdots && x-a_{n-1}
+	\end{bmatrix}\]
+	
+	
+	Pour calculer le déterminant, multipliez chaque ligne $i$ par $x^{i-1}$ et la sommez avec la première:
+	
+	\[C_{f_W}(x) = \det \begin{bmatrix}
+		0 && 0 && 0 && \cdots && x^n - a_{n-1}x^{n-1} - \cdots - a_1 x - a_0 \\
+		-1 && x && 0 && \cdots && -a_1 \\
+		0 && -1 && x && \cdots && -a_2 \\
+		\vdots && \vdots && \vdots && \ddots && \vdots \\
+		0 && 0 && 0 && \cdots && x-a_{n-1}
+	\end{bmatrix}\]
+	
+	Soit $P(x) = x^n - a_{n-1}x^{n-1} - \cdots - a_1 x - a_0$, on a que:
+	
+	\[C_{f_W}(x) = P(x) \det \begin{bmatrix}
+		0 && 0 && 0 && \cdots && 1 \\
+		-1 && x && 0 && \cdots && -a_1 \\
+		0 && -1 && x && \cdots && -a_2 \\
+		\vdots && \vdots && \vdots && \ddots && \vdots \\
+		0 && 0 && 0 && \cdots && x-a_{n-1}
+	\end{bmatrix} = P(x) (-1)^{n+1} \begin{bmatrix}
+	-1 && x && \cdots && 0 \\
+	0 && -1 && \cdots && 0 \\
+	\vdots && \vdots && \ddots && \vdots \\
+	0 && 0 && \cdots && -1
+	\end{bmatrix}\]
+	
+	\[C_{f_W}(x) = P(x) (-1)^{n+1} (-1)^{n-1} = P(x)\]
+	
+	
+	\item Comme $f_W$ est une restriction de $f$ elle contient la même propriété de $f$, telle que $f_W^n = a_0\id_W + a_1 f_W + \cdots + a_{n-1}f_W^{n-1}$, qui est le propre polynôme $P(x)$. Donc on peut voir que $C_{f_W}(f_W) = P(f_W) = 0$.
+	
+	
+	\item On peut construire une base de $V$ telle que $V = (v, f(v), \cdots, f^{n-1}(v), u_n, u_{n+1}, \cdots, u_d)$, de façon que la matrice associée à $f$ sera (en utilisant la notation de matrices par blocs):
+	
+	\[M(f) = \begin{pmatrix}
+		M(f_W) && A \\
+		0 && B \\
+	\end{pmatrix}\]
+	
+	où $A \in M_{n, d-n}(\C)$ et $B \in M_{d-n, d-n}(\C)$. Alors, $C_f(x) = \det(x \id - M(f))$:
+	
+	\[C_f(x) = \det \begin{bmatrix}
+		x \id - M(f_W) && -A \\
+		0 && x \id - B 
+	\end{bmatrix}\]
+	
+	Par les propriétés du déterminant de matrices par blocs, on arrive que:
+	
+	\[C_f(x) = \det(x \id - M(f_W)) \cdot \det(x \id - B) = C_{f_W}(x) \cdot \det(x \id - B)\]
+	
+	Donc on montre que $C_{f_W}(x)$ divise $C_f(x)$. 
 \end{enumerate}
 
+\textbf{Partie II}
 
+On a montré que pour $v \in V\ | v \neq 0$: $C_{f_W}(f)(v) = 0$ ($C_{f_W}(f) = f^n - a_{n-1}f^{n-1} - \cdots - a_0\cdot \id$). Or, comme $C_{f_W}(x)$ divise $C_f(x)$, on a aussi que $C_f(f)(v) = 0$.
+
+Donc comme $C_f(f)(v) = 0\ \forall v \in V$, il faut que:
+
+\[C_f(f) = 0\ \QED\]
+
+
+
+
+\subsection*{Exercice 10}
+
+\begin{enumerate}
+	\item Soit $v \in E$ avec le valeur propre $\lambda$ associé, on sait que par la propriété de la commutation: $f(g(v)) = g(f(v)) = g(\lambda v) = \lambda g(v)$. Donc on voit que $g(v) \in E$.
+	
+	
+	\item Soit $\mu_w(x)$ le polynôme minimal de l'application linéaire $w$. Pour cet item on utilisera le fait que:
+	
+	\[\text{ les racines de } \mu_w \text{ ont multiplicité unitaire } \iff w \text{ est diagonalisable } \]
+	
+	Comme $g$ est diagonalisable, son polynôme minimal contient seulement racines simples (de multiplicités égales a 1). Par l'autre côté, comme le polynôme minimal de la restriction de $g$ en $E$ divise $\mu_g(x)$, il doit avoir racines simples aussi. Donc $g_E$ doit être diagonalisable.
+	
+	
+	\item Comme $f$ est diagonalisable, sa matrice associé peut être écrite dans la forme suivante:
+	
+	\[M(f) = PD_fP^{-1} = P\begin{pmatrix}
+		\Lambda_1 && 0 && \cdots && 0 \\
+		0 && \Lambda_2 && \cdots && 0 \\
+		\vdots && \vdots && \ddots && \vdots \\
+		0 && 0 && \cdots && \Lambda_k \\
+	\end{pmatrix}P^{-1}\]
+	
+	où $\Lambda_i \in M_{l_i, l_i}(K)$, ($K$ est le corps) telle que $l_i$ est la dimension du sous-espace propre associé au valeur propre $\lambda_i$ et:
+	
+	\[\Lambda_i = \diagonal{{\lambda_1} {\lambda_1} {\ddots} {\lambda_1}}\]
+	
+	
+	De cette façon, comme les sous-espaces propres de $f$ sont stables sur $g$, on peut voir que la matrice associée à $g$, par rapport à la base $P$ est aussi diagonale par blocs:
+	
+	\[M(g) = P\begin{pmatrix}
+		G_1 && 0 && \cdots && 0 \\
+0 && G_2 && \cdots && 0 \\
+\vdots && \vdots && \ddots && \vdots \\
+0 && 0 && \cdots && G_k \\
+	\end{pmatrix} P^{-1}\]
+	
+	où $G_i \in M_{l_i, l_i}(K)$. Mais, on a prouvé que chaque restriction $G_i$ est aussi diagonalisable, de façon que $G_i = P_i D_i P_i^{-1}$, où $D_i$ est diagonale. Donc voyez que l'on peut récrire $M(g)$:
+	
+	\[M(g) = P\begin{pmatrix}
+		P_1 && 0 && \cdots && 0 \\
+		0 && P_2 && \cdots && 0 \\
+		\vdots && \vdots && \ddots && \vdots \\
+		0 && 0 && \cdots && P_k \\
+	\end{pmatrix}
+	\begin{pmatrix}
+		D_1 && 0 && \cdots && 0 \\
+		0 && D_2 && \cdots && 0 \\
+		\vdots && \vdots && \ddots && \vdots \\
+		0 && 0 && \cdots && D_k \\
+	\end{pmatrix}
+	\begin{pmatrix}
+	P_1^{-1} && 0 && \cdots && 0 \\
+	0 && P_2^{-1} && \cdots && 0 \\
+	\vdots && \vdots && \ddots && \vdots \\
+	0 && 0 && \cdots && P_k^{-1} \\
+	\end{pmatrix}P^{-1}\]
+	
+	En simplifiant:
+	
+	\[M(g) = PP_g\begin{pmatrix}
+		D_1 && 0 && \cdots && 0 \\
+		0 && D_2 && \cdots && 0 \\
+		\vdots && \vdots && \ddots && \vdots \\
+		0 && 0 && \cdots && D_k \\
+	\end{pmatrix}
+	P_g^{-1}P^{-1}\]
+	
+	Maintenant pour $M(f)$ e sa diagonale partie $D_f$, voyez que:
+	
+	\[P_gD_fP_g{-1} = \begin{pmatrix}
+		P_1 && 0 && \cdots && 0 \\
+		0 && P_2 && \cdots && 0 \\
+		\vdots && \vdots && \ddots && \vdots \\
+		0 && 0 && \cdots && P_k \\
+	\end{pmatrix}
+	\begin{pmatrix}
+		\Lambda_1 && 0 && \cdots && 0 \\
+		0 && \Lambda_2 && \cdots && 0 \\
+		\vdots && \vdots && \ddots && \vdots \\
+		0 && 0 && \cdots && \Lambda_k \\
+	\end{pmatrix}
+	\begin{pmatrix}
+		P_1^{-1} && 0 && \cdots && 0 \\
+		0 && P_2^{-1} && \cdots && 0 \\
+		\vdots && \vdots && \ddots && \vdots \\
+		0 && 0 && \cdots && P_k^{-1} \\
+	\end{pmatrix}
+\]
+
+\[P_gD_fP_g{-1} = \begin{pmatrix}
+	P_1\Lambda_1P_1^{-1} && 0 && \cdots && 0 \\
+	0 && P_2\Lambda_2P_2^{-1} && \cdots && 0 \\
+	\vdots && \vdots && \ddots && \vdots \\
+	0 && 0 && \cdots && P_k\Lambda_kP_k^{-1} \\
+\end{pmatrix} = \begin{pmatrix}
+\Lambda_1 && 0 && \cdots && 0 \\
+0 && \Lambda_2 && \cdots && 0 \\
+\vdots && \vdots && \ddots && \vdots \\
+0 && 0 && \cdots && \Lambda_k \\
+\end{pmatrix} = D_f\]
+
+Donc $M(f) = PP_g D_f P_g^{-1}P^{-1}$, où $PP_g$ est la matrice de cette base que diagonalise $f$ et $g$.
+
+
+\item Pas du tout. Je vais chanter la Cova pro Tito.
+
+
+\end{enumerate}
 
 
