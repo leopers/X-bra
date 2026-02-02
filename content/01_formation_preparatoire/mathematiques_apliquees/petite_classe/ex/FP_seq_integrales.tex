@@ -1,0 +1,107 @@
+\subsection*{Feuille n°1 — Sequences et intégrales}
+
+\subsubsection*{Suites numériques}
+
+\textbf{Exercice 1 (Moyenne de Césaro).}
+Soit $(a_n)_{n\ge 1}$ une suite complexe convergente, de limite $\ell$.
+\begin{enumerate}
+	\item Montrer que la suite $(b_n)_{n\ge 1}$ définie par
+	\[
+	\forall n\ge 1,\qquad b_n=\frac{a_1+\cdots+a_n}{n}
+	\]
+	converge vers $\ell$.
+	\item Montrer plus généralement que pour toute suite de réels positifs $(\varepsilon_n)$ telle que la série
+	\[
+	\sum_{n\ge 1}\varepsilon_n
+	\]
+	diverge, on a
+	\[
+	\lim_{n\to+\infty}\frac{a_1\varepsilon_1+\cdots+a_n\varepsilon_n}{\varepsilon_1+\cdots+\varepsilon_n}=\ell.
+	\]
+\end{enumerate}
+
+\textbf{Exercice 2.}
+Soit $(u_n)$ une suite définie par
+\[
+u_0>0,\quad u_1>0,\quad \lambda>0,\quad \forall n\in\mathbb{N},\qquad
+u_{n+2}=\lambda\sqrt{u_{n+1}u_n}.
+\]
+\begin{enumerate}
+	\item Montrer que la suite $(u_n)_{n\ge 1}$ est bien définie.
+	\item Soit $(v_n)$ la suite définie par $v_n=\ln(u_n)$. Chercher une solution particulière $(w_n)$ de $(v_n)$ sous la forme $w_n=\alpha^n$.
+	\item En déduire une récurrence linéaire à coefficients constants et expliciter le $n$-ième terme $u_n$ en fonction de $n$.
+\end{enumerate}
+
+\textbf{Exercice 3.}
+Soit $\alpha>0$ un nombre irrationnel et $(r_n)$ une suite de nombres rationnels qui converge vers $\alpha$.
+Pour tout $n$, on écrit
+\[
+r_n=\frac{p_n}{q_n},\qquad p_n\in\mathbb{Z},\quad q_n\in\mathbb{N}^*.
+\]
+Montrer que
+\[
+\lim_{n\to+\infty}p_n=+\infty
+\qquad\text{et}\qquad
+\lim_{n\to+\infty}q_n=+\infty.
+\]
+
+\textbf{Exercice 4.}
+Soit $(u_n)$ une suite telle que
+\[
+u_0>0,\qquad \forall n\in\mathbb{N},\qquad u_{n+1}=\sqrt{\frac{1+u_n}{2}}.
+\]
+Prouver que la suite $(v_n)$ définie par
+\[
+\forall n\in\mathbb{N},\qquad v_n=\prod_{i=1}^{n}u_i
+\]
+est convergente et calculer sa limite.
+
+\medskip
+\textit{Rappel de formule trigonométrique :}
+\[
+\forall x\in\mathbb{R},\qquad \cos\!\left(\frac{x}{2}\right)=\sqrt{\frac{1+\cos(x)}{2}}.
+\]
+
+\subsubsection*{Intégrales}
+
+\textbf{Exercice 1.}
+Soient $[a,b]$ un segment de $\mathbb{R}$ non réduit à un singleton et $f:[a,b]\to\mathbb{C}$ une fonction de classe $C^1$ telle que $f(a)=0$.
+\begin{enumerate}
+	\item Montrer que
+	\[
+	\int_a^b |f(x)|^2\,dx\ \le\ \frac{(b-a)^2}{2}\int_a^b |f'(x)|^2\,dx.
+	\]
+	\item Montrer que
+	\[
+	\left|\int_a^b f'(x)f(x)\,dx\right|
+	\ \le\ \frac{b-a}{2}\int_a^b |f'(x)|^2\,dx.
+	\]
+	\item Caractériser le cas d’égalité dans les deux inégalités précédentes.
+\end{enumerate}
+
+\textbf{Exercice 2.}
+Soit $f:\mathbb{R}_+\to\mathbb{R}$ une fonction de classe $C^1$, intégrable sur $\mathbb{R}_+$, telle que $(f')^2$ soit intégrable sur $\mathbb{R}_+$. Montrer que $f$ est bornée sur $\mathbb{R}_+$.
+
+\medskip
+\textit{Indication :} utiliser le théorème suivant.
+
+\medskip
+\textbf{Théorème.}
+Soient $a\in\mathbb{R}$ et $E$ un $\mathbb{K}$-espace vectoriel normé ($\mathbb{K}=\mathbb{R}$ ou $\mathbb{C}$).
+Soit $f:[a,+\infty[\to E$ une fonction uniformément continue sur $[a,+\infty[$.
+Si
+\[
+\int_a^{+\infty} f(t)\,dt
+\]
+converge, alors
+\[
+\lim_{t\to+\infty} f(t)=0.
+\]
+
+\medskip
+\textit{Rappel :} une fonction $f:E\to E$ est dite uniformément continue si
+\[
+\forall \varepsilon>0,\ \exists \delta>0,\ \forall(x,y)\in E^2,\ d(x,y)\le\delta\ \Rightarrow\ d(f(x),f(y))\le\varepsilon.
+\]
+
+
