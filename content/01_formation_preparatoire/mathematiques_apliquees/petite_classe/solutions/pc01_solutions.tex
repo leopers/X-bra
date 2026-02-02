@@ -19,3 +19,26 @@ Ainsi, on prend $N = \max(N_1, N_2)$ et pour tout $n \geq N$, on a $|b_n - l| < 
 2. 
 
 Soit $(\varepsilon_n)$ une suite de réels positifs telle que la série $\sum_{n \geq 1} \varepsilon_n$ diverge. On note $S_n = \varepsilon_1 + \cdots + \varepsilon_n$.
+
+On a que, 
+
+$$
+\lvert \frac{\sum_{k=1}^n a_k\varepsilon_k}{\sum_{k=1}^n \varepsilon_k} - l \rvert = |\frac{\sum_{k=1}^n (a_k - l)\varepsilon_k}{S_n}| \leq \frac{1}{S_n}\left(\sum_{k=1}^{N_1} |a_k - l|\varepsilon_k + \sum_{k=N_1+1}^n |a_k - l|\varepsilon_k\right)
+$$
+
+Or, puisque $(a_n)$ converge vers $l$, il existe $N_1 \in \mathbb{N}$ tel que pour tout $k \geq N_1 + 1$, on a $|a_k - l| < \epsilon$, pour tout $\epsilon > 0$.
+
+Ainsi, on a que $\sum_{k=1}^{N1}\varepsilon_k |a_k - l| \leq M$ pour une certaine constante $M > 0$.
+
+Alors, $$\lvert \frac{\sum_{k=1}^n a_k\varepsilon_k}{\sum_{k=1}^n \varepsilon_k} - l \rvert \leq \frac{1}{S_n}\left(M + \sum_{k=N_1+1}^n |a_k - l|\varepsilon_k\right) \leq \frac{M}{S_n} + \frac{1}{S_n}\sum_{k=N_1+1}^n |a_k - l|\varepsilon_k \leq \frac{M}{S_n} + \epsilon$$
+
+Et puisque la série $\sum_{n \geq 1} \varepsilon_n$ diverge, on a que $S_n \to +\infty$ quand $n \to +\infty$. Alors, $\frac{M}{S_n} \to 0$ et donc,
+
+$$
+\lim_{n \to +\infty} \frac{\sum_{k=1}^n a_k\varepsilon_k}{\sum_{k=1}^n \varepsilon_k} = l. \qed
+$$
+
+\subsection*{Exercice 2}
+1.
+
+

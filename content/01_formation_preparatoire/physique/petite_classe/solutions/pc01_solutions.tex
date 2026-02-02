@@ -1,0 +1,101 @@
+\subsection*{Probabilités}
+
+\subsubsection{Désintegration d'une particule radioative}
+
+1. Soit $F(t)$ la fonction de répartition: $F(t) = \mathbb{P}(T \leq t)$. On a:
+
+$$
+F(t) = \int_0^t p(t') dt'
+$$
+ou alors, en dérivant: $p(t) = F'(t)$. (1)
+
+2. La Désintegration radiocactive est un proccessus Markovien, donc 
+$$\mathbb{P}(T \leq t+dt|T > t) = \gamma dt$$ i.e.
+$$\mathbb{P}(t <T \leq t+dt|T > t) = \gamma dt \mathbb{P}(T > t) = \gamma dt (1-F(t))$$.
+
+3. On peut écrire $\mathbb{P}(t<T\leq t+dt) = F(t+dt) - F(t)$. Et donc, 
+$$
+\frac{F(t+dt)-F(t)}{dt} = \gamma (1-F(t))
+$$
+
+en faisant $dt \to 0$, on obtient l'équation différentielle:
+$$F'(t) = \gamma (1-F(t)) \quad \text{(2)}
+$$
+
+En combinant (1) et (2), on obtient l'équation différentielle:
+$$p(t) = -\gamma p(t)$$
+$p(0) = \gamma$, puisque $p(0)dt = \mathbb{P}(0\leq t \leq dt) = \gamma dt$. Et donc, la solution de cette équation différentielle est:
+$$p(t) = \gamma e^{-\gamma t}$$
+
+4. Vérifions que $p(t)$ est bien une densité de probabilité:
+$$
+\int_0^{+\infty} p(t) dt = \int_0^{+\infty} \gamma e^{-\gamma t} dt = \left[-e^{-\gamma t}\right]_0^{+\infty} = 1
+$$
+
+5. On cherche $\langle t \rangle$ et $\Delta t = \sqrt{\langle t^2 \rangle - \langle t \rangle^2}$.
+
+$$
+\langle t \rangle = \int_0^{+\infty} t p(t) dt = \int_0^{+\infty} t \gamma e^{-\gamma t} dt = \left[-t e^{-\gamma t}\right]_0^{+\infty} = \frac{1}{\gamma}
+$$
+
+$$
+\langle t^2 \rangle = \int_0^{+\infty} t^2 p(t) dt = \int_0^{+\infty} t^2 \gamma e^{-\gamma t} dt = \frac{2}{\gamma^2}
+$$
+
+et donc, $$\Delta t = \sqrt{\langle t^2 \rangle - \langle t \rangle^2} = \frac{1}{\gamma}$$.
+
+\pagebreak
+
+\subsubsection*{Distribution Gaussienne}
+
+\pagebreak
+
+\subsection*{Inteférences quantiques avec fentes de Young}
+
+1. Pc. de superposition: si $Psi_1$ et $Psi_2$ sont deux fonctions d'onde qui écrivent l'état du système, alors toute combinaison linéaire $\Psi = c_1 \Psi_1 + c_2 \Psi_2$ avec $c_1, c_2 \in \mathbb{C}^2$ décrit aussi un état du système. \\
+
+2. Les ondes issues de $F_1$ et $F_2$ prennent la forme: $\Psi_i = \Psi_0 e^{-i(kr_i - \omega t)}$
+
+On a alors 
+$$\Psi_{tot} = \Psi_1 + \Psi_2 = \Psi_0 e^{-i(kr_1 - \omega t)} + \Psi_0 e^{-i(kr_2 - \omega t)} = \Psi_0 e^{-i\omega t}(e^{-ikr_1} + e^{-ikr_2})$$
+
+$$= \Psi_0 e^{-i\omega t} e^{-ik\frac{r_1+r_2}{2}}(e^{ik\frac{r_1-r_2}{2}} + e^{-ik\frac{r_1-r_2}{2}}) = 2\Psi_0 e^{-i\omega t} e^{-ik\frac{r_1+r_2}{2}}\cos\left(k \frac{r_1-r_2}{2}\right)$$
+
+La densité de probabilité s'écrit donc:
+$$|\Psi_{tot}|^2 = 4|\Psi_0|^2 \cos^2\left(k \frac{r_1-r_2}{2}\right)$$
+
+2. On cherche $\Delta\Phi = k(r_1-r_2)$ avec $r_i = \sqrt{(x-x_i)^2 + D^2}$.
+
+On a $|x-x_i| \ll D$, donc on peut faire un développement limité:
+
+$$
+r_i = D\sqrt{1 + \frac{(x-x_i)^2}{D^2}}
+$$
+
+i.e. 
+
+$$
+r_i \approx D \left(1 + \frac{(x-x_i)^2}{2D^2}\right) = D + \frac{(x-x_i)^2}{2D}
+$$
+
+Donc,
+
+$$
+\Delta \Phi = k(r_1 - r_2) = \frac{h}{2D}2ax = \frac{hax}{D}
+$$.
+
+et donc, $|\Psi_{tot}|^2 = 4|\Psi_0|^2 \cos^2\left(\frac{hax}{D}\right)$.
+
+On cherche l'interfrange $\delta$ tel que $\frac{ha(x+\delta)}{D} = \frac{hax}{D} + 2\pi$, i.e. $\delta = \frac{2\pi D}{ha} = \frac{\lambda D}{a}$. \\
+
+4. Sur l’écran, on observe une figure d’interférences caractérisée par une alternance régulière de franges brillantes et sombres. 
+La densité de probabilité de présence n’est donc pas uniforme, mais présente des maxima et des minima en fonction de la position $x$.
+
+Ce résultat s’explique par le principe de superposition quantique : la fonction d’onde totale sur l’écran est la somme des amplitudes associées aux deux fentes. 
+Selon la position d’observation, les deux contributions peuvent interférer constructivement (franges brillantes) ou destructivement (franges sombres), en fonction de la différence de phase $\Delta\phi$.
+
+Ce comportement diffère radicalement du cas de particules classiques (balles), pour lesquelles on observerait simplement la somme des intensités issues de chaque fente, sans franges d’interférence.
+Il diffère également du cas purement ondulatoire classique dans son interprétation : ici, ce n’est pas l’intensité du champ qui interfère directement, mais l’amplitude de probabilité associée à une particule individuelle.
+
+Ainsi, bien que chaque particule soit détectée ponctuellement sur l’écran, la répétition de l’expérience révèle une figure d’interférences caractéristique d’un comportement ondulatoire.
+Ce phénomène illustre la dualité onde-particule et constitue une manifestation typique de la nature quantique de la matière.
