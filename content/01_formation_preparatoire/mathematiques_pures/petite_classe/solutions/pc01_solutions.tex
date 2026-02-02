@@ -400,7 +400,15 @@ Et considérant que $\dim \imag f^{k+1}$ aussi converge (par la même raison d'�
 	\[C_{f_W}(x) = P(x) (-1)^{n+1} (-1)^{n-1} = P(x)\]
 	
 	
-	\item Comme $f_W$ est une restriction de $f$ elle contient la même propriété de $f$, telle que $f_W^n = a_0\id_W + a_1 f_W + \cdots + a_{n-1}f_W^{n-1}$, qui est le propre polynôme $P(x)$. Donc on peut voir que $C_{f_W}(f_W) = P(f_W) = 0$.
+	\item Comme $f_W$ est une restriction de $f$ elle contient la même propriété de $f$, telle que $f_W^n(v) = a_0v + a_1 f_W(v) + \cdots + a_{n-1}f_W^{n-1}(v)$.
+	
+	Maintenant, soit $u \in W$, on sait que $u = b_0 v + b_1f_W(v) + \cdots + b_{n-1}f_W^{n-1}(v)$, où $b_i \in \C$, de manière qu'il peut être représenté par: $u = Q(f_W)(v)$, où $Q(x) = b_0 + b_1x + \cdots + b_{n-1}x^{n-1}$. Alors, analysons:
+	
+	\[C_{f_W}(f_W) (u) = (C_{f_W}\cdot Q)(f_W(v)) = Q(f_W) \cdot \left[P(f_W)(v)\right]\]
+	
+	Mais comme $P(f_W)(v) = 0$, $C_{f_W}(f_W)(u) = 0\ \forall u \in W$, donc il faut que:
+	
+	\[C_{f_W}(f_W) = 0\]
 	
 	
 	\item On peut construire une base de $V$ telle que $V = (v, f(v), \cdots, f^{n-1}(v), u_n, u_{n+1}, \cdots, u_d)$, de façon que la matrice associée à $f$ sera (en utilisant la notation de matrices par blocs):
@@ -539,9 +547,91 @@ Donc comme $C_f(f)(v) = 0\ \forall v \in V$, il faut que:
 Donc $M(f) = PP_g D_f P_g^{-1}P^{-1}$, où $PP_g$ est la matrice de cette base que diagonalise $f$ et $g$.
 
 
-\item Pas du tout. Je vais chanter la Cova pro Tito.
+\item \textbf{La base de récurrence:} $\dim V = 1$: toutes les applications linéaires sont déjà diagonalisables.
 
+\textbf{L'étape de récurrence:} Supposons que pour chaque sous-espace de dimension $\dim V < n$, le résultat est vrai. Considérons que $\dim V = n$.
+
+Si toutes $f_i = \lambda_i \cdot \id_V\ |\ \lambda_i \in K$, le résultat est direct. Ainsi, de l'autre côté, s'il y a quelque $f_i \neq \lambda_i \cdot \id_V$, elle aura au moins deux valeurs propres distincts, de manière que ses espaces propres associés auront dimensions inférieures à $n$. Sans perte de généralité, considérons que $f_1$ ait cette propriété.
+
+ Choisissez un sous-espace propre de $f_1$: $E_1$. Par la propriété de la commutation on conclut que chaque $f_j\ |\ j > 1$ est stable dans $E_1$:
+
+\[f_j(E_1) \in E_1\]
+
+Alors, comme $\dim E_1 < \dim V = n$, par l'hypothèse de récurrence on peut dire que chaque restriction de $f_j$ sur $E_1$: $f_{j, E_1}$ sont diagonalisables par la même base $B_1$. Rappelons que:
+
+\[M(f_i) = PD_fP^{-1}\]
+
+Si l'on répète ce processus pour chaque sous-espace propre de $f_1$, $E_1, E_2, \cdots, E_k$, ou trouve que pour chaque $f_i$:
+
+
+\[M(f_i) = P\begin{pmatrix}
+	F_{i,1} && 0 && \cdots && 0 \\
+	0 && F_{i,2} && \cdots && 0 \\
+	\vdots && \vdots && \ddots && \vdots \\
+	0 && 0 && \cdots && F_{i,k} \\
+\end{pmatrix} P^{-1}\]
+
+Mais, on a montré que:
+
+\[F_{i, j} = B_j D_{i, j} B_j^{-1}\]
+
+Donc:
+
+\[M(f_i) = P\begin{pmatrix}
+	B_1 &&\cdots && 0 \\
+	\vdots && \ddots && \vdots \\
+	0 && \cdots && B_k \\
+\end{pmatrix}
+\begin{pmatrix}
+	D_{i, 1} && \cdots && 0 \\
+	\vdots && \ddots && \vdots \\
+	0 && \cdots && D_{i, k} \\
+\end{pmatrix}
+\begin{pmatrix}
+	B_1^{-1} && \cdots && 0 \\
+	\vdots && \ddots && \vdots \\
+	0 && \cdots && B_k^{-1} \\
+\end{pmatrix}P^{-1}\]
+
+\[M(f_i) = PB
+\begin{pmatrix}
+	D_{i, 1} && \cdots && 0 \\
+	\vdots && \ddots && \vdots \\
+	0 && \cdots && D_{i, k} \\
+\end{pmatrix}B^{-1}P^{-1}\]
+
+Et par le même raisonnement, $M(f_1)$ et aussi diagonalisable par rapport à la base $PB$. Donc on montre qu'elles sont co-diagonalisables.
 
 \end{enumerate}
+
+
+\subsection*{Exercice 11}
+
+Cet exercice ne fait pas sens pour moi...
+
+
+
+\subsection*{Exercice 12}
+
+\begin{enumerate}
+	\item $f$ est nilpotent $\iff$ $C_f(x) = x^n$.
+	
+	Par la définition d'un endomorphisme nilpotent, c'est claire que $C_f(x) = x^n\ \implies$ $f$ est nilpotent.
+	
+	Maintenant, considérons $f$ nilpotent, et $k$ le plus petit entier tel que $f^k = 0$. Ainsi, comme le polynôme minimal $\mu_f(x)$ divise $x^k$ mais ne peut pas avoir un dégrée inférieur à $k$, on conclure que $\mu_f(x) = x^k$, de façon que le seul valeur propre associé est $\lambda = 0$.
+	
+	Donc, comme les racines du polynôme caractéristique sont les mêmes de celles du minimal, il faut que $C_f(x) = x^n$.
+	
+	
+	\item 
+	
+\begin{enumerate}
+\item  Comme $f^{n-1} \neq 0$ il existe $v$ tel que $f^{n-1}(v) \neq 0$. Analysons:
+
+\[\lambda_0 v + \lambda_1 f(v) + \cdots + \lambda_{n-1}f^{n-1}(v) = 0\]
+\end{enumerate}
+\end{enumerate}
+
+
 
 
