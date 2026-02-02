@@ -1,0 +1,21 @@
+\subsection*{Exercice 1}
+1. 
+
+D'abbord, comme la suite $(a_n)$ est bornée, on peut définir $D = \sup_n |a_n - l|$.
+
+Ensuite, puisque $(a_n)$ converge vers $l$, pour tout $\epsilon > 0$, il existe $N_1 \in \mathbb{N}$ tel que pour tout $n \geq N$, on a $|a_n - l| < \frac{\epsilon}{2}$.
+
+Donc,
+
+$$
+\left|b_n - l\right| = \left|\frac{1}{n}\sum_{k=1}^n (a_k - l)\right| \leq \frac{1}{n}\sum_{k=1}^n |a_k - l| = \frac{1}{n}\left(\sum_{k=1}^{N_1} |a_k - l| + \sum_{k=N_1+1}^n |a_k - l|\right) \leq \frac{1}{n}\left(N_1 D + (n-N_1)\frac{\epsilon}{2}\right)
+$$
+\\
+Or, $\frac{N_1 D}{n} \to 0 \text{ quand } n \to \infty, \text{ donc  }$ $\exists N_2 \in \mathbb{N}$ tel que pour tout $n \geq N_2$, on a $\frac{N_1 D}{n} < \frac{\epsilon}{2}$.
+\\
+Ainsi, on prend $N = \max(N_1, N_2)$ et pour tout $n \geq N$, on a $|b_n - l| < \epsilon$. $\qed$
+\\
+
+2. 
+
+Soit $(\varepsilon_n)$ une suite de réels positifs telle que la série $\sum_{n \geq 1} \varepsilon_n$ diverge. On note $S_n = \varepsilon_1 + \cdots + \varepsilon_n$.
