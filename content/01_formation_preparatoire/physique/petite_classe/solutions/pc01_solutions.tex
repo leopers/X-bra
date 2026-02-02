@@ -48,8 +48,67 @@ et donc, $$\Delta t = \sqrt{\langle t^2 \rangle - \langle t \rangle^2} = \frac{1
 
 \subsubsection*{Distribution Gaussienne}
 
-\pagebreak
+1. On pose $I = \int_{-\infty}^{+\infty} e^{-\frac{z^2}{2}} dz$. \\
+On a:
+$$I^2 = \int_{-\infty}^{+\infty} e^{-\frac{x^2}{2}} dx \int_{-\infty}^{+\infty} e^{-\frac{y^2}{2}} dy = \int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty} e^{-\frac{x^2 + y^2}{2}} dx dy$$
 
+On passe en coordonnées polaires: 
+\[
+\left\{
+\begin{aligned}
+x &= r\cos\theta,\\
+y &= r\sin\theta,\\
+dx\,dy &= r\,dr\,d\theta.
+\end{aligned}
+\right.
+\]
+
+$$
+I^2 = \int_0^{2\pi} d\theta \int_0^{+\infty} r e^{-\frac{r^2}{2}} dr = 2\pi \left[-e^{-\frac{r^2}{2}}\right]_0^{+\infty} = 2\pi$$ .
+
+Donc, $I = \sqrt{2\pi}$. \\
+
+2. On veut vérifier que $p(x)$ est une densité de probabilité, i.e. $\int_{-\infty}^{+\infty} p(x) dx = 1$.
+
+$$
+\int_{-\infty}^{+\infty} p(x) dx = \int_{-\infty}^{+\infty} \frac{1}{\sqrt{2\pi \sigma^2}} e^{-\frac{(x-x_0)^2}{2\sigma^2}} dx = \frac{1}{\sqrt{2\pi \sigma^2}} \int_{-\infty}^{+\infty} e^{-\frac{(x-x_0)^2}{2\sigma^2}} dx
+$$
+On fait le changement de variable $z = \frac{x-x_0}{\sigma}$, i.e. $dx = \sigma dz$.
+
+$$
+\int_{-\infty}^{+\infty} p(x) dx = \frac{1}{\sqrt{2\pi \sigma^2}} \int_{-\infty}^{+\infty} e^{-\frac{z^2}{2}} \sigma dz = \frac{\sigma}{\sqrt{2\pi \sigma^2}} \sqrt{2\pi} = 1
+$$.
+
+3. On cherche $\langle x \rangle$ et $\Delta x = \sqrt{\langle x^2 \rangle - \langle x \rangle^2}$.
+$$
+\langle x \rangle = \int_{-\infty}^{+\infty} x p(x) dx = \int_{-\infty}^{+\infty} x \frac{1}{\sqrt{2\pi \sigma^2}} e^{-\frac{(x-x_0)^2}{2\sigma^2}} dx
+$$  
+On fait le changement de variable $z = \frac{x-x_0}{\sigma}$, i.e. $x = \sigma z + x_0$ et $dx = \sigma dz$.
+$$
+\langle x \rangle = \int_{-\infty}^{+\infty} (\sigma z + x_0) \frac{1}{\sqrt{2\pi \sigma^2}} e^{-\frac{z^2}{2}} \sigma dz = \int_{-\infty}^{+\infty} \frac{\sigma^2 z}{\sqrt{2\pi \sigma^2}} e^{-\frac{z^2}{2}} dz + \int_{-\infty}^{+\infty} \frac{x_0 \sigma  }{\sqrt{2\pi \sigma^2}} e^{-\frac{z^2}{2}} dz
+$$
+Le premier terme est nul car l'intégrande est une fonction impaire. Le deuxième terme vaut $x_0$ d'après la question 2. Donc, $\langle x \rangle = x_0$. \\
+
+%% Ici, on va calculer l'ecart type par la définition i.e deltax = int of (x-mean)^2 p(x) dx
+D'ailleurs,
+$$
+(\Delta x)^2 = \int_{-\infty}^{+\infty} (x - x_0)^2 p(x) dx = \int_{-\infty}^{+\infty} (x - x_0)^2 \frac{1}{\sqrt{2\pi \sigma^2}} e^{-\frac{(x-x_0)^2}{2\sigma^2}} dx
+$$
+On fait le même changement de variable que précédemment:
+$$
+(\Delta x)^2 = \int_{-\infty}^{+\infty} (\sigma z)^2 \frac{1}{\sqrt{2\pi \sigma^2}} e^{-\frac{z^2}{2}} \sigma dz = \sigma^2 \int_{-\infty}^{+\infty} \frac{\sigma^2 z^2}{\sqrt{2\pi \sigma^2}} e^{-\frac{z^2}{2}} dz
+$$
+
+%%Intégration par parties
+On utilise une intégration par parties pour calculer l'intégrale:
+$$
+\int_{-\infty}^{+\infty} z^2 e^{-\frac{z^2}{2}} dz = \left[-z e^{-\frac{z^2}{2}}\right]_{-\infty}^{+\infty} + \int_{-\infty}^{+\infty} e^{-\frac{z^2}{2}} dz = \sqrt{2\pi}
+$$
+Donc,
+$$
+\Delta x = \sigma^2 \frac{1}{\sqrt{2\pi \sigma^2}} \sqrt{2\pi} = \sigma^2
+$$. 
+\pagebreak
 \subsection*{Inteférences quantiques avec fentes de Young}
 
 1. Pc. de superposition: si $Psi_1$ et $Psi_2$ sont deux fonctions d'onde qui écrivent l'état du système, alors toute combinaison linéaire $\Psi = c_1 \Psi_1 + c_2 \Psi_2$ avec $c_1, c_2 \in \mathbb{C}^2$ décrit aussi un état du système. \\
