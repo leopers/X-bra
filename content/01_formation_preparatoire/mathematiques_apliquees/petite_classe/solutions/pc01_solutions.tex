@@ -39,6 +39,174 @@ $$
 $$
 
 \subsection*{Exercice 2}
+
 1.
+
+Puisque $u_0 > 0, u_1>0$ et $\lambda<1$, on a $u_2 = \lambda \sqrt{u_1 u_0} >0$. On suppose que $u_j > 0$ pour tout $j < n$. Alors, $u_n = \lambda \sqrt{u_{n-1} u_{n-2}} > 0$, donc par récurrence, $u_n > 0$ pour tout $n \in \mathbb{N}$. \\
+
+2.
+
+Puisque $u_n > 0$ pour tout $n$, on peut définir $v_n = \ln(u_n)$. Ainsi,
+
+$$
+v_n = \ln(u_n) = \ln(\lambda \sqrt{u_{n-1} u_{n-2}}) = \ln(\lambda) + \frac{1}{2}(v_{n-1} + v_{n-2})  (*)
+$$
+
+
+Soit $w_n$ une solution de (*) sous la forme $w_n = \alpha n$, on a
+$$\alpha n = \ln(\lambda) + \frac{1}{2}(\alpha (n-1) + \alpha (n-2))$$
+$$\Longleftrightarrow \alpha n = \ln(\lambda) + \alpha n - \frac{3}{2}\alpha$$
+$$\Longleftrightarrow \alpha = -\frac{2 \ln(\lambda)}{3}$$ et donc,
+
+$$w_n = -\frac{2 \ln(\lambda)}{3} n$$ \\
+
+3. 
+
+Comme $u_n>0$ pour tout $n$ (question 1), on peut prendre le logarithme dans la relation
+\[
+u_{n+2}=\lambda\sqrt{u_{n+1}u_n}.
+\]
+On obtient, pour tout $n\in\mathbb{N}$,
+\[
+v_{n+2}=\ln(u_{n+2})
+=\ln(\lambda)+\ln\!\Big(\sqrt{u_{n+1}u_n}\Big)
+=\ln(\lambda)+\frac12\ln(u_{n+1})+\frac12\ln(u_n).
+\]
+Donc
+\[
+\boxed{\; v_{n+2}-\frac12v_{n+1}-\frac12v_n=\ln(\lambda)\; } \qquad (\star)
+\]
+qui est une récurrence linéaire affine à coefficients constants.
+
+L'équation homogène associée est
+\[
+v_{n+2}-\frac12v_{n+1}-\frac12v_n=0.
+\]
+On cherche une solution sous la forme $v_n=r^n$, d'où l'équation caractéristique
+\[
+r^2-\frac12 r-\frac12=0
+\quad\Longleftrightarrow\quad
+2r^2-r-1=0.
+\]
+Ses racines sont
+\[
+r_1=1,\qquad r_2=-\frac12.
+\]
+Ainsi, la solution générale de l'homogène est
+\[
+v_n^{(h)}=A+B\Big(-\frac12\Big)^n,
+\]
+où $A,B\in\mathbb{R}$.
+
+Le second membre de $(\star)$ est constant, mais comme $r=1$ est racine de l'équation caractéristique,
+une particulière constante ne convient pas ; on essaie donc une solution particulière affine $v_n^{(p)}=cn$.
+
+En substituant dans $(\star)$ :
+\[
+c(n+2)-\frac12c(n+1)-\frac12cn
+= c(n+2)-\frac{c}{2}(2n+1)
+= c\Big(2-\frac12\Big)
+= \frac32c.
+\]
+On veut $\frac32c=\ln(\lambda)$, donc
+\[
+c=\frac{2}{3}\ln(\lambda).
+\]
+Ainsi, une solution particulière est
+\[
+v_n^{(p)}=\frac{2}{3}\,n\ln(\lambda).
+\]
+
+En combinant homogène + particulière :
+\[
+\boxed{\; v_n = A + B\Big(-\frac12\Big)^n + \frac{2}{3}\,n\ln(\lambda)\; }.
+\]
+Comme $u_n=e^{v_n}$, on obtient
+\[
+u_n=\exp\!\Big(A + B\Big(-\frac12\Big)^n\Big)\cdot
+\exp\!\Big(\frac{2}{3}\,n\ln(\lambda)\Big)
+=\exp\!\Big(A + B\Big(-\frac12\Big)^n\Big)\,\lambda^{\frac{2n}{3}}.
+\]
+En posant $C=e^A>0$, cela s'écrit
+\[
+\boxed{\; u_n = C\,\lambda^{\frac{2n}{3}}\exp\!\Big(B\Big(-\frac12\Big)^n\Big)\; }.
+\]
+
+On a
+\[
+v_0=\ln(u_0)=A+B,
+\qquad
+v_1=\ln(u_1)=A-\frac{B}{2}+\frac{2}{3}\ln(\lambda).
+\]
+Donc
+\[
+\frac32B = \ln(u_0)-\ln(u_1)+\frac{2}{3}\ln(\lambda)
+\quad\Longrightarrow\quad
+\boxed{\; B=\frac{2}{3}\Big(\ln\!\frac{u_0}{u_1}+\frac{2}{3}\ln(\lambda)\Big)\; }.
+\]
+Puis
+\[
+\boxed{\; A=\ln(u_0)-B \;}
+\quad\text{(et donc } C=e^A=u_0e^{-B}\text{)}.
+\]
+
+\subsection*{Exercice 3}
+
+Montrons que $q_n\to +\infty$.
+Supposons par l'absurde que $(q_n)$ ne tende pas vers $+\infty$.
+Alors $(q_n)$ est bornée : il existe $M\ge 1$ tel que
+\[
+\forall n\in\mathbb{N},\qquad 1\le q_n\le M.
+\]
+Ainsi, $(q_n)$ ne prend ses valeurs que dans l'ensemble fini $\{1,2,\dots,M\}$.
+Par conséquent, il existe $q\in\{1,\dots,M\}$ et une sous-suite $(q_{n_k})_{k\ge 1}$ telle que
+\[
+\forall k\ge 1,\qquad q_{n_k}=q.
+\]
+On considère la sous-suite correspondante :
+\[
+r_{n_k}=\frac{p_{n_k}}{q}.
+\]
+Comme $r_n\to\alpha$, on a aussi $r_{n_k}\to\alpha$. En multipliant par $q$, il vient
+\[
+p_{n_k}=q\,r_{n_k}\xrightarrow[k\to\infty]{} q\alpha.
+\]
+Or $q\in\mathbb{N}^*$ et $\alpha$ est irrationnel, donc $q\alpha$ est irrationnel.
+Mais $(p_{n_k})$ est une suite d'entiers, ce qui est impossible puisqu'une suite d'entiers
+convergente converge nécessairement vers un entier.
+Contradiction. Donc
+\[
+q_n\xrightarrow[n\to\infty]{} +\infty.
+\]
+
+Montrons que $p_n\to +\infty$.
+Puisque $r_n\to\alpha$ et $\alpha>0$, en prenant $\varepsilon=\alpha/2$, il existe $n_0\in\mathbb{N}$ tel que,
+pour tout $n\ge n_0$,
+\[
+|r_n-\alpha|<\frac{\alpha}{2}
+\quad\Longrightarrow\quad
+\frac{\alpha}{2}<r_n<\frac{3\alpha}{2}.
+\]
+Comme $q_n>0$, on peut multiplier l'inégalité par $q_n$ :
+\[
+\forall n\ge n_0,\qquad
+\frac{\alpha}{2}\,q_n<p_n<\frac{3\alpha}{2}\,q_n.
+\]
+En particulier,
+\[
+\forall n\ge n_0,\qquad p_n>\frac{\alpha}{2}\,q_n.
+\]
+Or $q_n\to+\infty$, donc $(\alpha/2)q_n\to+\infty$, et par comparaison on obtient
+\[
+p_n\xrightarrow[n\to\infty]{} +\infty.
+\]
+
+Ainsi,
+\[
+\lim_{n\to\infty} q_n=+\infty
+\qquad\text{et}\qquad
+\lim_{n\to\infty} p_n=+\infty.
+\]
+
 
 
