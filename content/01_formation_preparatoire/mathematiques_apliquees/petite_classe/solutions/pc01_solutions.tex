@@ -212,5 +212,130 @@ Ainsi,
 
 \subsection*{Exercice 4}
 
+(i) Soint $u_0 = 0 \Rightarrow u_n = 1 \forall n \in \N$ par récurrence et donc $v_n \to 1$
+
+(ii) Soit $u_0 < 1$, par recurrence $u_n < 1 \forall n \in \N$, puisque $u_n < 1 \Rightarrow \frac{1+u_n}{2} < 1 \Rightarrow u_{n+1} = \sqrt{\frac{1+u_n}{2}} < 1$
+
+Alors, soit $\theta$ tel que $\cos\theta = u_0$. Ainsi, $u_n = \cos(\frac{\theta}{2^n})$ puisque $\forall x \in \R \cos(\frac{x}{2}) = \sqrt{\frac{1+\cos x}{2}}$
+
+$$
+v_n = \prod_{k=1}^n cos\left(\frac{\theta}{2^k}\right) \Rightarrow 2^n \sin(\frac{\theta}{2})v_n = \sin(\theta) \Rightarrow v_n = \frac{\sin(\theta)}{2^n \sin(\frac{\theta}{2^n})} \to \frac{\sin(\theta)}{\theta} 
+$$
+
+Donc $v_n \to \frac{\sin(\theta)}{\theta}$ où $\theta = \arccos(u_0)$.
+
+(iii) Soit $u_0 > 1$, par recurrence $u_n > 1 \forall n \in \N$, puisque $u_n > 1 \Rightarrow \frac{1+u_n}{2} > 1 \Rightarrow u_{n+1} = \sqrt{\frac{1+u_n}{2}} > 1$
+
+Alors, soit $\theta$ tel que $\cosh\theta = u_0$. Ainsi, $u_n = \cosh(\frac{\theta}{2^n})$ puisque $\forall x \in \R \cosh(\frac{x}{2}) = \sqrt{\frac{1+\cosh x}{2}}$
+$$
+v_n = \prod_{k=1}^n cosh\left(\frac{\theta}{2^k}\right) \Rightarrow 2^n \sinh(\frac{\theta}{2})v_n = \sinh(\theta) \Rightarrow v_n = \frac{\sinh(\theta)}{2^n \sinh(\frac{\theta}{2^n})} \to \frac{\sinh(\theta)}{\theta} 
+$$
+
+Donc $v_n \to \frac{\sinh(\theta)}{\theta}$ où $\theta = \operatorname{arccosh}(u_0)$.
 
 \section*{Intégrales}
+
+\subsection*{Exercice 1}
+
+1.
+Soit $x \in [a, b] \subset \R$. Alors, 
+
+\[
+\begin{aligned}
+|f(x)|^2 
+&= \left|\int_a^x f'(t)\,dt\right|^2 \\
+&\le \left(\int_a^x |f'(t)|\,dt\right)^2 \\
+&= \left(\int_a^x |f'(t)|\cdot 1\,dt\right)^2 \\
+&\le \left(\int_a^x |f'(t)|^2\,dt\right)
+   \left(\int_a^x 1^2\,dt\right)
+   \quad \text{(Cauchy--Schwarz)} \\
+&= (x-a)\int_a^x |f'(t)|^2\,dt \\
+&\le (x-a)\int_a^b |f'(t)|^2\,dt .
+\end{aligned}
+\]
+
+Donc, on obtient 
+\[
+\int_{a}^{b} |f(x)|^2\,dx \le \frac{(b-a)^2}{2}\int_a^b |f'(t)|^2\,dt .
+\]
+\\
+2. On considère la fonction $g: [a,b] \to \R$ définie par $g(x) = \int_a^x |f'(t)|\,dt$. Alors $g'(x) = |f'(x)|$ et $g(a) = 0$. 
+
+Or, $$|f(x)| = \left|\int_a^x f'(t)\,dt\right| \le \int_a^x |f'(t)|\,dt = g(x).$$
+
+Ainsi,
+$$
+\left|\int_{a}^{b}f(x)f'(x)\,dx\right| \le \int_{a}^{b}|f(x)||f'(x)|\,dx \le \int_{a}^{b}g(x)g'(x)\,dx = \frac{g(b)^2}{2}
+$$
+
+Or,
+\[
+g(b)=\int_a^b |f'(t)|\,dt.
+\]
+Par Cauchy--Schwarz,
+\[
+\left(\int_a^b |f'(t)|\,dt\right)^2
+=\left(\int_a^b |f'(t)|\cdot 1\,dt\right)^2
+\le \int_a^b |f'(t)|^2\,dt \int_a^b 1^2\,dt
+=(b-a)\int_a^b |f'(t)|^2\,dt.
+\]
+
+Ainsi,
+\[
+\int_a^b g(x)g'(x)\,dx
+=\frac{g(b)^2}{2}
+\le \frac{b-a}{2}\int_a^b |f'(t)|^2\,dt,
+\]
+et par conséquent
+\[
+\left|\int_a^b f(x)f'(x)\,dx\right|
+\le \frac{b-a}{2}\int_a^b |f'(x)|^2\,dx.
+\]
+
+3. \\
+
+(1) Par Cauchy-Schwarz, le cas d'égalité occure ssi $f'(x) = cte$. Comme $f(a) = 0$, on a $f(x) = c(x-a)$ pour un certain $c \in \R$.
+
+En vérifiant, 
+
+$$
+\int_{a}^{b} |c|^2|x-a|^2 dx = |c|^2 \frac{(b-a)^3}{3} \hspace{1em}\text{et} \hspace{1em} \frac{(b-a)^2}{2} \int_{a}^{b} |c|^2 dx = |c|^2 \frac{(b-a)^3}{2}
+$$
+
+Pour l'égalité, $|c| = 0$:
+
+Donc, on a l'égalité ssi $f \equiv 0$. \\
+
+(2) Par Cauchy-Schwarz, le cas d'égalité occure ssi $|f'(x)| = cte$. Comme $f(a) = 0$, on a $f(x) = c(x-a)$ pour un certain $c \in \R$.
+
+En vérifiant,
+$$
+\left|\int_{a}^{b} c^2(x-a) dx\right| = |c|^2 \frac{(b-a)^2}{2} \hspace{1em}\text{et} \hspace{1em} \frac{b-a}{2} \int_{a}^{b} |c|^2 dx = |c|^2 \frac{(b-a)^2}{2}
+$$
+
+Donc, on a l'égalité ssi $f(x) = c(x-a)$ pour un certain $c \in \R$.
+
+
+\subsection*{Exercice 2}
+ 
+Pour montrer que $f$ est bornée, on va montrer que $\lim_{x \to \infty} f(x) = 0$, puisque $f$ est continue sur $\R^+$. 
+
+On peut utiliser le theorème precedente et, ainsi, on affirme que f est uniformément continue.
+
+Or, puisque $f \in \mathcal{C}^1$ et $f' \in L^2(\R^+)$, on a que 
+
+$$
+\forall (x,y) \in \R_+^2, \hspace{1em} |f(x) - f(y)|^2 \leq \left|\int_{x}^{y} |f'(t)|^2 dt\right| \leq \left|\int_{x}^{\infty} |f'(t)|^2 dt\right|.\left|\int_{x}^{y} 1^2 dt\right| \hspace{1em} \text{(Par Cauchy-Schwarz)} 
+$$
+
+$$
+= K^2|x-y|
+$$
+
+Ainsi, soit $\epsilon > 0$, il existe $\delta = \frac{\epsilon^2}{K^2} > 0$ tel que pour tout $(x,y) \in \R_+^2$ avec $|x-y| < \delta$, on a $|f(x) - f(y)| < \epsilon$.
+
+Alors, $f$ est uniformément continue sur $\R^+$, et donc, $\lim_{x \to \infty} f(x) = 0$
+$$
+\Rightarrow f \qquad \text{est bornée sur } \R^+ \qquad \qed
+$$
+
