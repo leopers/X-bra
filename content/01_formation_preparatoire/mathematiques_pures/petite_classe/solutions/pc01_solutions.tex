@@ -466,7 +466,7 @@ Donc comme $C_f(f)(v) = 0\ \forall v \in V$, il faut que:
 	
 	où $\Lambda_i \in M_{l_i, l_i}(K)$, ($K$ est le corps) telle que $l_i$ est la dimension du sous-espace propre associé au valeur propre $\lambda_i$ et:
 	
-	\[\Lambda_i = \diagonal{{\lambda_1} {\lambda_1} {\ddots} {\lambda_1}}\]
+	\[\Lambda_i = \lambda_i \id_{l_i}\]
 	
 	
 	De cette façon, comme les sous-espaces propres de $f$ sont stables sur $g$, on peut voir que la matrice associée à $g$, par rapport à la base $P$ est aussi diagonale par blocs:
@@ -610,7 +610,7 @@ Voyons que:
 
 \[A^2 - \id = 0\]
 
-Donc $P(x) = x^2 - 1 = (x-1)(x+1)$ annihile $A$, et comme $P$ a des racines simples, $A$ doit être diagonalisable, avec les possibles vecteurs propres $\lambda \in \{1, -1\}$. De cette façon, pour $A, B \in G$, et en sachant que $G$ et un groupe:
+Donc $P(x) = x^2 - 1 = (x-1)(x+1)$ annihile $A$, et comme $P$ a des racines simples, $A$ doit être diagonalisable, avec les possibles vecteurs propres $\lambda \in \{1, -1\}$. De cette façon, pour $A, B \in G$, et en sachant que $G$ est un groupe:
 
 \[A \cdot B \in G\]
 \[\implies (AB)^2 = ABAB = I\]
@@ -712,7 +712,7 @@ Finalement, par le théorème du rang:
 
 Pour $n = 1$ le résultat est direct, étant donné que $f^{1-1} = \id$.
 
-Pour $n > 1$: si $\dim \imag f = n - 1$, on a que $\dim \ker f = 1$. Comme on a montrer pour l'exercice 3:
+Pour $n > 1$: si $\dim \imag f = n - 1$, on a que $\dim \ker f = 1$. Comme on a montré pour l'exercice 3:
 
 \[\dim \imag f^k - \dim \imag f^{k+1} = \dim \left(\ker f \cap \imag f^k\right) \le 1\]
 
