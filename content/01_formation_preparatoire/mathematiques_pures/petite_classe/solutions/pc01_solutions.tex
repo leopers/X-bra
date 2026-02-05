@@ -628,9 +628,232 @@ Cet exercice ne fait pas sens pour moi... (André pemba loko, pqp)
 \item  Comme $f^{n-1} \neq 0$ il existe $v$ tel que $f^{n-1}(v) \neq 0$. Analysons:
 
 \[\lambda_0 v + \lambda_1 f(v) + \cdots + \lambda_{n-1}f^{n-1}(v) = 0\]
+
+Appliquez $f^{n-1}$ à cette expression. Comme $f^k(v) = 0,\ \forall k \ge n$, il ne restera que:
+
+\[\lambda_0 f^{n-1}(v) = 0\]
+\[\implies \lambda_0 = 0\]
+
+De la même façon on peut conclure que chaque $\lambda_i$ doit être zéro. Ainsi, comme l'ensemble a $n$ éléments linéairement indépendants, il est une base $B$ de $V$.
+
+
+\item
+
+\[M_B(f) = 	\begin{pmatrix}
+	0 && 0 && \cdots && 0 \\
+	1 && 0 && \cdots && 0 \\
+	0 && 1 && \cdots && 0 \\
+	\vdots && \vdots && \ddots && \vdots \\
+	0 && 0 && \cdots && 0
+\end{pmatrix}\]
+
+On peut voir que $M_B(f)$ est déjà une matrice échelonnée inférieurement (triangulaire), donc son rang est le nombre de colonnes non nulles: $n-1$ (seulement la dernière est nulle).
+
+
+\item Si $g = P(f)$, c'est direct que $g$ commute à $f$.
+
+Or, si $g$ commute à $f$:
+
+\[g \circ f = f \circ g\]
+\[(g \circ f)(f^{k-1}) = (f \circ g)(f^{k-1})\]
+
+Et, comme $f \circ g \circ f^{k-1} = g \circ f^{k}$:
+
+\[g \circ f^k = f^k \circ g\]
+
+Pour un $u \in V$ on a que $u = Q[f](v)$, et supposons que $g(v) = P[f](v)$, où $Q(x), P(x)$ sont des polynômes de degré maxime $(n-1)$:
+
+\[g(u) = g\left(Q[f](v)\right) = Q[f]P[f](v) = P[f]Q[f](v) = P[f](u)\]
+
+Donc $g = P[f]$.
 \end{enumerate}
+
+
+\item Par définition, $f_0(v) = f(v) \subset V_0$. On voit aussi que, comme $f_0^n (v) = f^n(v) = 0$, $f_0$ est aussi nilpotent. De cette façon:
+
+\[\ker f_0 = \ker f \cap \imag f\]
+
+où, comme on a défini dans l'item antérieur:
+
+\[\imag f = \langle f(v), f^2(v), \cdots, f^{n-1}(v)\rangle\]
+
+Or, comme $f^{n-1}(v) \in \ker f$ et  $\dim \ker f = 1$, vu que $\dim \imag f = n-1$ (théorème du rang):
+
+\[\ker f = \langle f^{n-1}(v) \rangle\]
+
+D'ailleurs, $f^{n-1}(v) = f(f^{n-2}(v))$, alors $\langle f^{n-1}(v) \rangle = \ker f \subset \imag(f) = V_0$, donc:
+
+\[\ker(f_0) = \ker f \cap \imag f = \ker f\]
+
+Finalement, par le théorème du rang:
+
+\[\dim \imag f_0 = n-1 - \dim \ker f_0 = n-2\]
+
+\item Voyez que nous avons déjà prouvé $(a) \implies (b)$ et $(b) \implies (c)$, alors on montrera seulement l'implication $(c) \implies (a)$:
+
+Pour $n = 1$ le résultat est direct, étant donné que $f^{1-1} = \id$.
+
+Pour $n > 1$: si $\dim \imag f = n - 1$, on a que $\dim \ker f = 1$. Comme on a montrer pour l'exercice 3:
+
+\[\dim \imag f^k - \dim \imag f^{k+1} = \dim \left(\ker f \cap \imag f^k\right) \le 1\]
+
+Maintenant sommons cette expression pour chaque $k \in \N\ |\ 0 \le k \le n-2$, (donc pour $n-1$ valeurs de $k$):
+
+\[\dim V - \dim \imag f^{n-1} \le n-1\]
+\[\dim \imag f^{n-1} \ge 1\]
+
+Donc il faut que $f^{n-1} \neq 0$.
+\end{enumerate}
+
+
+\subsection*{Exercice 13}
+
+\begin{enumerate}
+\item \textbf{Stabilité de la Somme et du Produit}
+
+Soient:
+
+\[A = \begin{pmatrix}
+	x && -y \\
+	\bar{y} && \bar{x} 
+\end{pmatrix}\]
+
+\[B = \begin{pmatrix}
+	a && -b \\
+	\bar{b} && \bar{a} 
+\end{pmatrix}\]
+
+Alors:
+
+\[A+B = \begin{pmatrix}
+	x+a && -y-b \\
+	\bar{y} + \bar{b} && \bar{x} + \bar{a} 
+\end{pmatrix} = \begin{pmatrix}
+x+a && -(y+b) \\
+\overline{y + b} && \overline{x + a} 
+\end{pmatrix} \in \mathbb{H}\]
+
+
+Par ailleurs:
+
+\[A\cdot B = \begin{pmatrix}
+	ax - \bar{b}y && -\bar{a}y - bx \\
+	a\bar{y} + \bar{b}\bar{x} && \bar{a}\bar{x} - b\bar{y}
+\end{pmatrix} = \begin{pmatrix}
+	ax - \bar{b}y && -(\bar{a}y + bx) \\
+	\overline{\bar{a}y + bx} && \overline{ax - \bar{b}y}
+\end{pmatrix} \in \mathbb{H}\]
+
+
+\item \textbf{Stabilité par multiplication par un scalaire}
+
+ Pour un $\lambda \in \R$ il suit que $\lambda = \bar{\lambda}$, de façon que:
+ 
+ \[\lambda A = \begin{pmatrix}
+ 	\lambda x && -\lambda y \\
+ 	\lambda \bar{y} && \lambda \bar{x} 
+ \end{pmatrix} = \begin{pmatrix}
+ \lambda x && -\lambda y \\
+ \overline{\lambda y} && \overline{\lambda x}
+ \end{pmatrix} \in \mathbb{H}\]
+ 
+ 
+ Donc, comme cet ensemble possède les propriétés de la somme, produit par scalaire, et aussi l'élément neutre:
+ 
+ \[0 = \begin{pmatrix}
+ 	0 && 0 \\ 0 && 0 
+ \end{pmatrix}\]
+ 
+ On peut conclure que $\mathbb{H}$ est un espace vectoriel réel (puisque la propriété du scalaire n'est valide que pour $\lambda \in \R$).
+ 
+ 
+ \item \textbf{Vérification d'une base} 
+ 
+ Notez qu'une matrice générique $A \in \mathbb{H}$  avec $x = a+ib$ et $y=c+id$ ($a, b, c, d \in \R$), peut être exprimée de la façon suivante:
+ 
+ \[A = \begin{pmatrix}
+ 	a + ib && -c-id \\
+ 	c - id && a-ib 
+ \end{pmatrix} = a \id + b \cdot u + c \cdot v + d \cdot w\]
+ 
+ Alors $\langle \id, u, v, w\rangle$ engendre $\mathbb{H}$ et on voit que $A = 0 \implies a=b=c=d=0$, de manière que cet ensemble est linéairement indépendant. Donc il est une base de $\mathbb{H}$.
+ 
+ \item \textbf{Polynôme caractéristique et minimal}
+ 
+ Le polynôme caractéristique:
+ 
+ \[C_A(\lambda) = \det \begin{bmatrix}
+ 	x - \lambda && -y \\
+ 	\bar{y} && \bar{x} -\lambda
+ \end{bmatrix} = \lambda^2 - (x+\bar{x})\lambda + x\bar{x} + y\bar{y} = \lambda^2 - 2 \text{Re}(x)\lambda + |x|^2 + |y|^2\]
+ 
+ Comme $|x|^2 + |y|^2 > \text{Re}^2(x)$, on conclut que $C_A(\lambda)$ n'a pas des solutions réels, alors les racines sont complexes et distincts entre elles, de façon que le polynôme minimal sera identique à $C_A(\lambda)$.
+ 
+ 
+ \item \textbf{Matrice Inverse}
+ 
+ 
+ Si $A \neq 0$, $|x|^2 + |y|^2 \neq 0$. Ainsi, par le polynôme caractéristique:
+ 
+ \[(|x|^2 + |y|^2)\id = (2 \text{Re}(x)\cdot\id - A)A\]
+ 
+ Donc on voit que:
+ 
+ \[A^{-1} = \frac{1}{|x|^2 + |y|^2}(2 \text{Re}(x)\cdot \id - A)\]
+ 
+ \[\therefore A^{-1} = \frac{1}{|x|^2 + |y|^2}\begin{pmatrix}
+ 	\bar{x} && y \\
+ 	-\bar{y} && x 
+ \end{pmatrix}\]
+ 
+ 
+ Alors on voit que cet ensemble accomplit les conditions pour être considéré un corps.
+ 
 \end{enumerate}
 
 
 
+\subsection*{Exercice 14}
 
+\begin{enumerate}
+	
+\item Soit $P(x)$ le polynôme minimal de $A$. On voit que:
+
+\[P[\varphi](M) = P[A](M)\]
+
+Donc si $P(x)$ annihile $A$, il annihilera aussi $\varphi$, et comme $P(x)$ a des racines simples (puisque $A$ est diagonalisable), le polynôme minimal de $\varphi$ aura aussi des racines simples, donc $\varphi$ est diagonalisable. 
+
+\item Par l'hypothèse:
+
+\[\varphi(M_0) = AM_0 = \lambda_\varphi M_0\]
+\[AX_0 = \lambda_A X_0\]
+\[\implies AM_0X_0 = \lambda_\varphi M_0X_0\]
+
+Donc $M_0X_0$ est vecteur propre de $A$ s'il n'est pas nul. En fait, ce même raisonnement est valide si $X_0$ n'était pas un vecteur propre.
+
+
+\item Comme $X = [x_1, x_2, \cdots, x_n]^T \neq 0$, il y a au moins un valeur $x_i$ tel que $x_i \neq 0$. Donc on peut construire $B$ telle que:
+
+\[B = Y\cdot \left(\frac{1}{x_i}e_i^T\right)\]
+
+où $e_i$ est l'élément $i$ de la base canonique du $\R^n$. Par exemple: $e_2 = [0, 1, 0, \cdots, 0]^T$. Cela fonctionne car $e_i^T\cdot X = x_i$.
+
+
+Ensuite, comme $B \in M_n(\R)$, elle peut être représentée comme une combinaison linéaire de la base $M_i$:
+
+\[B = \sum_{i=1}^{n^2} \lambda_i M_i\]
+\[\therefore Y = \sum_{i=1}^{n^2} \lambda_i (M_iX)\ \forall Y \in \R^n\]
+
+Donc $\langle M_1X, \cdots, M_{n^2}X \rangle$ engendre $\R^n$.
+
+\item On pourrait utiliser le même argument du polynôme caractéristique, mais cela serait une gaspillage du développement que l'on a fait jusqu'à maintenant.
+
+Si $\varphi$ est diagonalisable, on peut choisir $M_i$ (les éléments de la base de $M_n(\R)$) vecteurs propres de $\varphi$. De cette manière, par l'item (2), on sait que $M_iX$ est aussi un valeur propre de $A$.
+
+Donc on a que l'ensemble de vecteurs propres de $A$: $B_A = \langle M_1X, \cdots, M_{n^2}X \rangle$ a $n^2$ éléments et engendre $\R^n$.
+
+Initialement considérons $E_A = \{\}$ un ensemble vide. On peut itérer pour chaque $v_i = M_iX$ et l'ajouter à l'ensemble $E_A$ si $v_i$ n'est pas déjà une combinaison linéaire des éléments de $E_A$. À la fin, on aura que $E_A$ est composé de vecteurs propres de $A$, il engendre $\R^n$ et il est linéairement indépendant, donc $A$ est diagonalisable. $\QED$
+
+\vspace{5cm}
+	
+\end{enumerate}
