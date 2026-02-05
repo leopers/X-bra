@@ -78,19 +78,78 @@ Soient $f$ et $g$ deux endomorphismes diagonalisables de $V$ qui commutent (c’
 	Montrer par récurrence sur $\dim(V)$ que les $f_i$, pour $i\in I$, sont diagonalisables dans une même base.
 \end{enumerate}
 
-\textbf{Exercice 11.} Soit $G$ un sous‑groupe fini de $\mathrm{GL}(n,\mathbf{R})$.  
+\textbf{Exercice 11.} Soit $G$ un sous‑groupe fini de $\mathrm{GL}(n,\R)$.  
 On suppose que tout élément $A$ de $G$ satisfait $A^{2}=I_n$ où $I_n$ est la matrice identité.  
 Montrer que $G$ a au plus $2^{\,n}$ éléments.
 
 \textbf{Exercice 12.} Soit $V$ un espace vectoriel de dimension $n$ et $f$ un endomorphisme de $V$.
 
 \begin{enumerate}
-	\item Montrer que $f$ est nilpotent (c’est‑à‑dire qu’il existe $r\in\mathbf{N}^{*}$ tel que $f^{r}=0$) si et seulement si son polynôme caractéristique est $P(T)=(-T)^{n}$.
+	\item Montrer que $f$ est nilpotent (c’est‑à‑dire qu’il existe $r\in\N^{*}$ tel que $f^{r}=0$) si et seulement si son polynôme caractéristique est $P(T)=(-T)^{n}$.
 	\item On suppose que $f$ est nilpotent et $f^{\,n-1}\neq 0$.
 	\begin{enumerate}
 		\item Montrer qu’il existe $v\in V$ tel que $v,\;f(v),\;f^{2}(v),\dots,f^{\,n-1}(v)$ soit une base de $V$.
 		\item Écrire la matrice de $f$ dans la base $(v,f(v),f^{2}(v),\dots,f^{\,n-1}(v))$. En déduire le rang de $f$.
-		\item Montrer que $g$ commute à $f$ si et seulement si il existe un polynôme $P\in\mathbf{R}[X]$ tel que $g=P(f)$.
+		\item Montrer que $g$ commute à $f$ si et seulement si il existe un polynôme $P\in\R[X]$ tel que $g=P(f)$.
 	\end{enumerate}
+
+\item On suppose que $f$ est nilpotent, de rang $n-1$.  
+Soit $V_{0}=\operatorname{Im}(f)$. Montrer que $f(V_{0})\subset V_{0}$.  
+Soit $f_{0}$ l’endomorphisme de $V_{0}$ induit par $f$
+(c’est‑à‑dire $f_{0}:V_{0}\to V_{0}$ est défini par $f_{0}(v)=f(v)$ pour
+$v\in V_{0}$). Montrer que $f_{0}$ est nilpotent, de même noyau que $f$,
+et de rang $n-2$.
+
+\item On suppose que $f$ est nilpotent. En raisonnant par récurrence sur $\dim V$, montrer que les assertions suivantes sont équivalentes :
+\begin{enumerate}
+	\item $f^{\,n-1}\neq 0$.
+	\item Il existe un vecteur $u$ de $V$ tel que $(u, f(u), f^{2}(u),\dots,f^{\,n-1}(u))$ soit une base de $V$.
+	\item Le rang de $f$ est $n-1$.
+\end{enumerate}
 \end{enumerate}
 
+% Exercice 13
+\textbf{Exercice 13.}
+Soit $H$ l’ensemble des matrices de la forme
+\[
+\begin{pmatrix}
+	x & -y\\[2pt]
+	\bar{y} & \bar{x}
+\end{pmatrix}
+\]
+où $x$ et $y$ sont des nombres complexes et $\bar{x},\,\bar{y}$ leur conjugué.
+
+Montrer que la somme et le produit de deux matrices dans $H$ est encore dans $H$.
+Montrer aussi que $H$ est stable par multiplication par un nombre réel.
+En déduire que $H$ est un espace vectoriel réel.
+
+Vérifier qu’une base de $H$ est donnée par
+\[
+I=\begin{pmatrix}1&0\\0&1\end{pmatrix},\qquad
+u=\begin{pmatrix}i&0\\0&-\,i\end{pmatrix},\qquad
+v=\begin{pmatrix}0&-1\\1&0\end{pmatrix},\qquad
+w=\begin{pmatrix}0&-\,i\\-\,i&0\end{pmatrix},
+\]
+avec
+\[
+u^{2}=v^{2}=w^{2}=-I,\qquad uv=-vu=w.
+\]
+
+Calculer le polynôme caractéristique et le polynôme minimal d’un élément de $H$.
+
+Montrer que tout élément non nul de $H$ est inversible, et que son inverse est encore dans $H$.
+En déduire que $H$ est un corps (non commutatif).
+
+% Exercice 14
+\textbf{Exercice 14.}
+Soit $A\in M_{n}(\R)$ et $\varphi:M_{n}(\R)\to M_{n}(\R)$ définie par $\varphi(M)=AM$.
+
+\begin{enumerate}
+	\item Montrer que, si $A$ est diagonalisable alors $\varphi$ est diagonalisable.
+	\item Soit $X_{0}$ un vecteur propre pour $A$ et $M_{0}$ un vecteur propre pour $\varphi$.
+	Montrer que si $M_{0}X_{0}\neq 0$ alors $M_{0}X_{0}$ est un vecteur propre de $A$.	
+	\item Soit $M_{1},\dots,M_{n^{2}}$ une base de $M_{n}(\R)$ et $X$ un vecteur non nul de $\R^{n}$.
+	Montrer que pour tout $Y\in\R^{n}$, il existe $B\in M_{n}(\R)$ tel que $Y=BX$.
+	En déduire que $M_{1}X,\dots,M_{n^{2}}X$ engendrent $\R^{n}$.
+	\item Montrer que, si $\varphi$ est diagonalisable alors $A$ est diagonalisable.
+\end{enumerate}

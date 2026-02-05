@@ -606,7 +606,26 @@ Et par le même raisonnement, $M(f_1)$ et aussi diagonalisable par rapport à la
 
 \subsection*{Exercice 11}
 
-Cet exercice ne fait pas sens pour moi... (André pemba loko, pqp)
+Voyons que:
+
+\[A^2 - \id = 0\]
+
+Donc $P(x) = x^2 - 1 = (x-1)(x+1)$ annihile $A$, et comme $P$ a des racines simples, $A$ doit être diagonalisable, avec les possibles vecteurs propres $\lambda \in \{1, -1\}$. De cette façon, pour $A, B \in G$, et en sachant que $G$ et un groupe:
+
+\[A \cdot B \in G\]
+\[\implies (AB)^2 = ABAB = I\]
+
+Maintenant, multiplions chaque membre par $A$ à la gauche et $B$ à la droite:
+
+\[A^2BAB^2 = AB\]
+\[\therefore BA = AB\]
+
+Donc chaque $A, B \in G$, commutent entre elles, de façon que l'on peut utiliser l'exercice antérieur: il y a une base $P$ telle que, chaque $A_i \in G$ est diagonalisable par $P$. Et, en plus, la matrice diagonale $D_i$ associée, aura les éléments $1$ ou $-1$ à la diagonale principal (car ils sont les seules valeurs propres possibles):
+
+\[A_i = P \diagonal{{1 \text{ ou } -1} {1 \text{ ou } -1} \ddots {1 \text{ ou } -1}}P^{-1}\]
+
+Donc on a seulement 2 choix possibles pour chaque éléments de la diagonale principal, de manière que le nombre maxime de $A_i$ distincts sera: $2^n$.
+
 
 
 
