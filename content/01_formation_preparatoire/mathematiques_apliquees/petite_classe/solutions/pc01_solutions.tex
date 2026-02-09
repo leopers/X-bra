@@ -219,7 +219,7 @@ Ainsi,
 Alors, soit $\theta$ tel que $\cos\theta = u_0$. Ainsi, $u_n = \cos(\frac{\theta}{2^n})$ puisque $\forall x \in \R \cos(\frac{x}{2}) = \sqrt{\frac{1+\cos x}{2}}$
 
 $$
-v_n = \prod_{k=1}^n cos\left(\frac{\theta}{2^k}\right) \Rightarrow 2^n \sin(\frac{\theta}{2})v_n = \sin(\theta) \Rightarrow v_n = \frac{\sin(\theta)}{2^n \sin(\frac{\theta}{2^n})} \to \frac{\sin(\theta)}{\theta} 
+v_n = \prod_{k=1}^n \cos\left(\frac{\theta}{2^k}\right) \Rightarrow 2^n \sin\left(\frac{\theta}{2^n}\right)v_n = \sin(\theta) \Rightarrow v_n = \frac{\sin(\theta)}{2^n \sin\left(\frac{\theta}{2^n}\right)} \to \frac{\sin(\theta)}{\theta} 
 $$
 
 Donc $v_n \to \frac{\sin(\theta)}{\theta}$ où $\theta = \arccos(u_0)$.
@@ -228,7 +228,7 @@ Donc $v_n \to \frac{\sin(\theta)}{\theta}$ où $\theta = \arccos(u_0)$.
 
 Alors, soit $\theta$ tel que $\cosh\theta = u_0$. Ainsi, $u_n = \cosh(\frac{\theta}{2^n})$ puisque $\forall x \in \R \cosh(\frac{x}{2}) = \sqrt{\frac{1+\cosh x}{2}}$
 $$
-v_n = \prod_{k=1}^n cosh\left(\frac{\theta}{2^k}\right) \Rightarrow 2^n \sinh(\frac{\theta}{2})v_n = \sinh(\theta) \Rightarrow v_n = \frac{\sinh(\theta)}{2^n \sinh(\frac{\theta}{2^n})} \to \frac{\sinh(\theta)}{\theta} 
+v_n = \prod_{k=1}^n \cosh\left(\frac{\theta}{2^k}\right) \Rightarrow 2^n \sinh\left(\frac{\theta}{2^n}\right)v_n = \sinh(\theta) \Rightarrow v_n = \frac{\sinh(\theta)}{2^n \sinh\left(\frac{\theta}{2^n}\right)} \to \frac{\sinh(\theta)}{\theta} 
 $$
 
 Donc $v_n \to \frac{\sinh(\theta)}{\theta}$ où $\theta = \operatorname{arccosh}(u_0)$.
