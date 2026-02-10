@@ -1,0 +1,115 @@
+\subsection*{Execice 1.}
+
+Soit $\varepsilon>0$. Choisissons $M>0$ tel que
+\[
+e^{-M}<\varepsilon.
+\]
+
+\medskip
+
+\textbf{1) Convergence sur $[0,M]$ }
+
+Pour $u\in[0,1)$, posons $g(u)=\log(1-u)$. On a
+\[
+g''(u)=-\frac{1}{(1-u)^2}.
+\]
+Par Taylor--Lagrange à l'ordre $1$ en $0$, pour tout $u\in[0,1)$ il existe $\theta\in(0,1)$ tel que
+\[
+\log(1-u)= -u+\frac{g''(\theta)}{2}u^2
+= -u-\frac{u^2}{2(1-\theta)^2}.
+\]
+Donc
+\[
+\bigl|\log(1-u)+u\bigr|
+=\frac{u^2}{2(1-\theta)^2}
+\le \frac{u^2}{2}.
+\]
+
+Fixons $x\in[0,M]$ et supposons $n\ge 2M$. En posant $u=\frac{x}{n}$, on a $0\le u\le 1$, d'où
+\[
+\left|n\log\!\left(1-\frac{x}{n}\right)+x\right|
+= n\bigl|\log(1-u)+u\bigr|
+\le n\cdot \frac{u^2}{2}
+= \frac{x^2}{2n}
+\le \frac{M^2}{2n}.
+\]
+
+Maintenant, on applique le théorème des accroissements finis à $\exp$ entre
+\[
+a = n\log\!\left(1-\frac{x}{n}\right) \quad\text{et}\quad b=-x.
+\]
+Il existe $\xi$ entre $a$ et $b$ tel que
+\[
+\left|e^a-e^b\right| = e^{\xi}\,|a-b|.
+\]
+Or $x\in[0,n]$ implique $1-\frac{x}{n}\in[0,1]$, donc $a\le 0$, et bien sûr $b\le 0$,
+donc $\xi\le 0$ et ainsi $e^\xi\le 1$. Par conséquent,
+\[
+\left|\left(1-\frac{x}{n}\right)^n-e^{-x}\right|
+=\left|e^a-e^b\right|
+\le |a-b|
+=\left|n\log\!\left(1-\frac{x}{n}\right)+x\right|
+\le \frac{M^2}{2n}.
+\]
+Donc
+\[
+\sup_{x\in[0,M]}|f_n(x)-e^{-x}|
+\le \frac{M^2}{2nß}\xrightarrow[n\to\infty]{}0.
+\]
+Il existe donc $N_1$ tel que, pour $n\ge N_1$,
+\[
+\sup_{x\in[0,M]}|f_n(x)-e^{-x}|\le \varepsilon.
+\]
+
+\medskip
+
+\textbf{2) Convergence sur $[M,n]$.}
+
+On utilise l'inégalité $1-t\le e^{-t}$ pour $t\ge0$. Pour $x\in[0,n]$ :
+\[
+\left(1-\frac{x}{n}\right)^n\le e^{-x}.
+\]
+Donc, pour $x\in[M,n]$,
+\[
+0\le e^{-x}-\left(1-\frac{x}{n}\right)^n\le e^{-x}\le e^{-M}<\varepsilon,
+\]
+d'où
+\[
+\sup_{x\in[M,n]}|f_n(x)-e^{-x}|\le \varepsilon.
+\]
+
+\medskip
+
+\textbf{3) Convergence sur $(n,+\infty)$.}
+
+Si $x>n$, alors $f_n(x)=0$ et donc
+\[
+|f_n(x)-e^{-x}|=e^{-x}\le e^{-n}.
+\]
+Il existe $N_2$ tel que, pour $n\ge N_2$, $e^{-n}\le \varepsilon$, donc
+\[
+\sup_{x>n}|f_n(x)-e^{-x}|\le \varepsilon.
+\]
+
+\medskip
+
+\textbf{Conclusion.}
+
+Pour $n\ge N:=\max(N_1,N_2,2M)$,
+\[
+\sup_{x\ge 0}|f_n(x)-e^{-x}|
+=
+\max\!\left\{
+\sup_{x\in[0,M]}|f_n(x)-e^{-x}|,
+\sup_{x\in[M,n]}|f_n(x)-e^{-x}|,
+\sup_{x>n}|f_n(x)-e^{-x}|
+\right\}
+\le \varepsilon.
+\]
+Ainsi $f_n\to e^{-x}$ uniformément sur $\mathbb{R}_+$.
+\qed
+
+\subsection*{Exercice 2.}
+
+On affirme que $P_n \to f$ uniformément et, ainsi, que $f$ est aussi un polynôme.
+

@@ -1,0 +1,136 @@
+\begin{center}
+{\large \textbf{APM 3X050 EP — Mathématiques Appliquées 2026}}\\
+\medskip
+{\Large \textbf{PC 2 : Suites de fonctions}}
+\end{center}
+
+\bigskip
+
+\section*{Rappels.}
+
+\noindent— \textbf{Définition.}
+Soient $X$ un ensemble, $(E,d)$ un espace métrique, et $(f_n)_{n\in\mathbb{N}}$ une suite de fonctions de $X$ dans $E$.
+On dit que $(f_n)$ \emph{converge uniformément sur $X$} vers $f:X\to E$ si
+\[
+\forall \varepsilon>0,\ \exists N\in\mathbb{N},\ \forall n\ge N,\ \forall x\in X,\ d\!\bigl(f_n(x),f(x)\bigr)<\varepsilon.
+\]
+
+\medskip
+
+\noindent— \textbf{Proposition (Critère de Cauchy uniforme).}
+Une suite de fonctions d’un ensemble $X$ vers un espace métrique complet $(E,d)$ converge uniformément sur $X$ si et seulement si
+\[
+\forall \varepsilon>0,\ \exists N\in\mathbb{N},\ \forall p,q\ge N,\ \forall x\in X,\ d\!\bigl(f_p(x),f_q(x)\bigr)<\varepsilon.
+\]
+
+\medskip
+
+\noindent— \textbf{Théorème de Heine.}
+Une fonction réelle continue sur un segment $[a,b]$ est uniformément continue sur ce segment.
+
+\medskip
+
+\noindent— \textbf{Théorème.}
+Soient $(E,d)$ et $(F,d)$ deux espaces métriques compacts.
+Soit $f:K\to F$ une fonction continue, où $K$ est une partie compacte de $E$.
+Alors $f(K)$ est un compact de $F$.
+En particulier, si $f:K\to\mathbb{R}$ avec $K$ compact, alors $f$ est bornée et atteint ses bornes.
+
+\medskip
+
+\noindent— \textbf{Inégalité des accroissements finis.}
+Soient $a<b$ deux réels, $f:[a,b]\to\mathbb{R}^n$ continue sur $[a,b]$ et dérivable sur $]a,b[$.
+On suppose qu’il existe $M\ge 0$ tel que, pour tout $t\in]a,b[$,
+\[
+\|f'(t)\|\le M.
+\]
+Alors
+\[
+\|f(b)-f(a)\|\le M(b-a).
+\]
+
+\medskip
+
+\noindent— \textbf{Théorème de convergence dominée.}
+Soit $(f_n)$ une suite de fonctions continues par morceaux de $I$ dans $E$ vérifiant :
+\begin{enumerate}
+\item[(i)] Il existe une fonction positive $\varphi$, continue par morceaux, intégrable sur $I$, telle que
+$\|f_n\|\le \varphi$ pour tout $n$.
+\item[(ii)] La suite $(f_n)$ converge simplement vers une fonction $f:I\to E$ continue par morceaux.
+\end{enumerate}
+Alors les $f_n$ et $f$ sont intégrables sur $I$ et
+\[
+\lim_{n\to\infty}\int_I f_n=\int_I f.
+\]
+
+\bigskip
+
+\section*{Exercices}
+
+\textbf{Exercice 1.}
+Montrer que la suite de fonctions $(f_n)$ définie par
+\[
+f_n:\mathbb{R}_+\to\mathbb{R},\qquad
+f_n(x)=
+\begin{cases}
+\left(1-\dfrac{x}{n}\right)^n & \text{si } x\in[0,n],\\[6pt]
+0 & \text{si } x>n,
+\end{cases}
+\]
+converge uniformément sur $\mathbb{R}_+$ vers la fonction $f:x\mapsto e^{-x}$.
+
+\medskip
+
+\textbf{Exercice 2.}
+Que dire d’une fonction $f:\mathbb{R}\to\mathbb{R}$ limite uniforme sur $\mathbb{R}$ d’une suite de fonctions polynômes $(P_n)$ ?
+
+\medskip
+
+\textbf{Exercice 3.}
+On considère la suite de fonctions $(f_n)$ définie par
+\[
+\forall n\in\mathbb{N},\qquad
+f_n:[0,\tfrac{\pi}{2}]\to\mathbb{R},\quad x\mapsto \cos^n(x)\,\sin x.
+\]
+\begin{enumerate}
+\item[(a)] Montrer que $(f_n)$ converge uniformément vers la fonction nulle sur $[0,\tfrac{\pi}{2}]$.
+\item[(b)] On définit $g_n=(n+1)f_n$. Montrer que sur tout intervalle
+$[\delta,\tfrac{\pi}{2}]$ avec $0<\delta<\tfrac{\pi}{2}$, $(g_n)$ converge uniformément vers la fonction nulle.
+\item[(c)] La suite
+\[
+\left(\int_0^{\pi/2} g_n(t)\,dt\right)_{n}
+\]
+tend-elle vers zéro ? En déduire un lien avec le théorème de convergence dominée.
+\end{enumerate}
+
+\medskip
+
+\textbf{Exercice 4. (Polynômes d’approximation de Bernstein)}
+On note $I=[0,1]$ et $\mathcal{C}$ l’espace vectoriel des fonctions continues de $I$ dans $\mathbb{C}$.
+Pour $f\in\mathcal{C}$ et $n\in\mathbb{N}^*$, on définit
+\[
+B_n(f)(x)=\sum_{k=0}^{n} f\!\left(\frac{k}{n}\right)b_k^n(x),
+\qquad
+b_k^n(x)=\binom{n}{k}x^k(1-x)^{n-k}.
+\]
+\begin{enumerate}
+\item[(a)] Calculer
+\[
+\sum_{k=0}^{n}\left(\frac{k}{n}-x\right)^2 b_k^n(x).
+\]
+\item[(b)] En déduire que pour tout $\eta>0$ et tout $x\in I$,
+\[
+\sum_{\substack{k\\ \left|\frac{k}{n}-x\right|\ge \eta}} b_k^n(x)\le \frac{1}{n\eta^2}.
+\]
+\item[(c)] (\textbf{Théorème de Bernstein}) Montrer que $(B_n(f))_{n\in\mathbb{N}}$ converge uniformément vers $f$ sur $[0,1]$.
+\end{enumerate}
+
+\medskip
+
+\textbf{Exercice 5.}
+Soit $(f_n)$ une suite de fonctions dérivables de $I=[0,1]$ dans un espace de Banach $E$.
+On suppose que $(f_n')$ converge uniformément vers une fonction $g$ sur $I$, et qu’il existe $x_0\in I$ tel que $(f_n(x_0))$ converge.
+\begin{enumerate}
+\item[(a)] Montrer que $(f_n)$ converge uniformément sur $I$ vers une fonction dérivable $f$.
+\item[(b)] Montrer que $f'=g$.
+\end{enumerate}
