@@ -113,3 +113,28 @@ Ainsi $f_n\to e^{-x}$ uniformément sur $\mathbb{R}_+$.
 
 On affirme que $P_n \to f$ uniformément et, ainsi, que $f$ est aussi un polynôme.
 
+Soit $\varepsilon>0$. Puisque  $P_n\to f$ uniformément, par le Critère de Cauchy, il existe $N_0$ tel que,
+
+$$\forall m,n\ge N_0, \forall x\in\mathbb{R}\qquad |P_n(x)-P_m(x)|\le \varepsilon.$$
+
+On prend $\varepsilon = 1$ et donc $$\forall m,n\ge N_0, \forall x\in\mathbb{R}\qquad |P_n(x)-P_m(x)|\le 1.$$
+
+Cela est satisfait ssi $P_n(x)-P_m(x)= \text{cte}$, puisque $P_n-P_m$ est un polynôme et on sait que les polynômes sont non bornés à l'infini sauf s'ils sont constants. 
+
+Ainsi, 
+
+$$\forall n\ge N_0, \forall x\in\mathbb{R}\qquad P_n(x)-P_{N_0}(x)= \alpha_n $$
+
+où $\alpha_n$ est une constante réel qui dépend de $n$.
+
+Mais, $$\alpha_n = P_n(0)-P_{N_0}(0) \xrightarrow[n\to\infty]{} f(0)-P_{N_0}(0) = \alpha,$$
+
+ où $\alpha \in \mathbb{R}$ puisque $P_n(0)\to f(0)$ par convergence uniforme.
+
+Donc, pour $n\ge N_0$ et $x\in\mathbb{R}$, $$P_n(x) = P_{N_0}(x) + \alpha_n \xrightarrow[n\to\infty]{} P_{N_0}(x) + \alpha.$$
+
+Ainsi, $f(x) = P_{N_0}(x) + \alpha$ est un polynôme.
+\qed
+
+\subsection*{Exercice 3.}
+
