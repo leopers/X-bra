@@ -1,0 +1,132 @@
+\section*{Quelques rappels...}
+
+\subsection*{Problème 1}
+
+\begin{enumerate}
+\item Par la définition donnée:
+
+\[\binom{n}{k} = \frac{n(n-1)\cdots (n-k+1)}{k!} = \frac{n(n-1)\cdots (n-k+1) \cdot (n-k) \cdots 2 \cdot  1}{k!(n-k) \cdots 2 \cdot  1} = \frac{n!}{(n-k)!k!} \]
+
+De cette façon, analysons:
+
+\[\begin{split}
+	\binom{n}{k} + \binom{n}{k-1} &= \frac{n!}{(n-k)!k!} +\frac{n!}{(n-k+1)!(k-1)!} \\
+	 &= \frac{n!}{(n-k)!(k-1)!}\left(\frac{1}{k} + \frac{1}{n-k+1}\right) \\
+	 &= \frac{n!}{(n-k)!k!} \frac{n+1}{k(n-k+1)} \\
+	 &= \frac{(n+1)!}{(n-k+1)!k!} = \binom{n+1}{k}\\
+\end{split}
+\]
+
+\item On va utiliser un argument de récurrence: Soit l'hypothèse $H_k$ affirmant que $\forall n \in \Z$ et $\forall m \in \N\ |\ m \le k$, on a que $\binom{n}{m} \in \Z$. C'est direct que $H_0$ est vraie, par la définition proposée. Donc, en supposant que $H_{k-1}$ soit vraie, on a que:
+
+\[\binom{n+1}{k} = \binom{n}{k} + \binom{n}{k-1}\]
+
+\[\implies a_n = \binom{n+1}{k} - \binom{n}{k} = \binom{n}{k-1} \in \Z\]
+
+Voyez aussi que, comme chaque $a_n \in \Z$, leur somme:
+
+\[\sum_{i = 0}^{n}a_i = \binom{n+1}{k} - \binom{0}{k} \in \Z\]
+
+Or, par la définition du binomial, $\binom{0}{k} = 0$, ainsi, pour $n \ge 0$:
+
+\[\binom{n+1}{k} \in \Z\]
+
+Donc tous les éléments sont entières, de manière que $H_{k}$ est vraie, donc la récurrence nous garant que $\binom{n}{k} \in \Z$ dans ces conditions.
+
+\end{enumerate}
+
+
+
+
+
+
+
+\subsection*{Problème 2}
+
+
+\begin{enumerate}
+\item 
+
+Comme $A$ est un groupe, il doit avoir un élément neutre par rapport à l'opération (en ce cas, l'addition), et aussi un inverse pour chaque élément. Ainsi, il faut que $0 \in A$ et que $v \in A \implies -v \in A$.
+
+Soit $D = \min({v \in A\ |\ v > 0})$. On peut voir que, par la propriété de la stabilité du groupe:
+
+\[D + D = 2D \in A\]
+\[2D + D = 3D \in A\]
+\[\vdots\]
+\[\implies kD \in A\ |\ \forall k \in \Z\]
+
+Donc $D\Z \subset A$. On veut montrer maintenant que $A \subset D \Z$, alors, supposons que l'on peut trouver un élément positif (sans perte de généralité) $p \in A$ tel qu'il ne soit pas un multiple de $D$. De cette manière, on peut trouver $k\in \N$ tel que $kD < p < (k+1)D$. Donc comme $kD \in A\ \implies\ p - kD \in A$, mais $0 < p - kD < D$, ainsi $D$ n'est pas le plus petit positif appartenant à $A$, ce qui est une contradiction.
+
+Donc il faut que $A \subset D\Z$, de façon que l'on preuve que $A = D\Z$.
+
+
+\item $a\Z + b\Z$ est un sous-groupe de $\Z$:
+
+\begin{itemize}
+	\item \textbf{Élément Neutre}: $0 \in a\Z + b\Z$, puisque $0 = a\cdot 0 + b\cdot 0$.
+	
+	\item \textbf{Inverse d'Opération}: Si $v = az_1 + bz_2$, donc il existe $u = a(-z_1) + b(-z_2)$ dans cet ensemble tel que $u + v = v + u = 0$.
+	
+	\item \textbf{Stabilité}: Si $u = az_1 + bz_2$ et $v = az_3 + bz_4$, donc $u + v = a(z_1 + z_3) + b(z_2 + z_4)$ appartient aussi à l'ensemble.
+\end{itemize}
+
+De cette façon, par l'item antérieur, on peut trouver $D$ tel que $a\Z + b\Z = D\Z$. Or, comme $a, b \in D\Z$, il suit que $D|a$ et $D|b$, et donc $D|\text{pgdc}(a, b)$.
+
+D'autre côté, on peut écrire $D = az_1 + bz_2$. Soit $p = \text{pgdc}(a, b)$ et $a = pa'$, $b = pb'$, avec $a', b' \in \Z$. D'après cela on voit que $D = p(a'z_1 + b'z_2)$, et alors $p | D$. Donc on conclut que $D = p$.
+
+
+\item $p = 1\ \implies \ a\Z + b\Z = \Z$. Comme $1 \in \Z$, il existent $u, v\in \Z$ tels que $au + bv = 1$.
+
+\end{enumerate}
+
+\subsection*{Problème 3}
+
+
+\begin{enumerate}
+\item \textbf{[Lemme de Gauss]} Si pgdc$(a,b) = 1$, on peut utiliser le résultat de la question antérieure: $\exists u,v \in \Z\ |\ au+bv = 1$. Donc on voit que $bv = 1 - au$, de façon que:
+
+\[a|bc \implies a|bvc \implies a|c - auc\]
+
+Comme $a|auc$, il suit que $a|c$.
+
+
+\item \textbf{Théorème Fondamental de l'Arithmétique}:
+
+Nous devons montrer l'existence et aussi l'unicité de cette représentation.
+
+\qquad \textbf{Existence:}
+
+On va regarder les entiers positifs, étant donné que pour les négatifs il suffit d'inverser le signe d'un positif correspondant.
+
+Supposons par récurrence que l'hypothèse $H_n$, de que il existe une représentation en premiers $\forall 0 < i \ge n$, soit vraie. Voyons aussi que $H_{2}$ est vraie.
+
+Maintenant, si $n+1$ est premier, donc il est sa propre représentation en premiers, de façon que $H_{n+1}$ est aussi vraie.
+
+Par contre, si $n+1$ n'est pas premier, il peut être écrit comme le produit de 2 autres nombres $a,b$ plus petits que $n+1$: $0 < a,b \le n$. Or, comme $H_n$ est vraie, $a$ et $b$ satisfont la condition, de façon que $n+1$ satisfera aussi: $H_{n+1}$ est vraie.
+
+\qquad \textbf{Unicité}
+
+Pour um nombre premier $p$, en utilisant le lemme antérieur, on montre que si $p|a_1a_2$: $p|a_1$ ou $p|a_2$ (une simple preuve par contradiction). De ce résultat on montre que si $p|a_1a_2\cdots a_n$, $p$ doit diviser au moins un de ces facteurs.
+
+Supposons, par l'absurde, que:
+
+\[n = p_1^{n_1}\cdots p_k^{n_k} = q_1^{m_1}\cdots q_l^{m_l}\]
+
+\[\implies p_1^{n_1}|q_1^{m_1}\cdots q_l^{m_l}\]
+
+Donc il faut que $p_1^{n_1}$ divise quelque élément:
+
+\[p_1^{n_1}|q_i^{m_i}\]
+
+Donc, comme $q_i$ est premier, il faut que $q_i = p_1$ et $n_1 \le m_i$. Or, si $n_1 < m_i$, on peut diviser les deux côtés par $p_1^{n_1}$:
+
+\[p_2^{n_2}\cdots p_k^{n_k} = q_1^{m_1}\cdots p_1^{m_i - n_1} \cdots q_l^{m_l}\]
+
+Mais comme il n'y a pas un facteur de $p_1$ dans le premier membre, il faut que $m_i = n_1$.
+
+On peut appliquer cet argument récursivement jusqu'à la fin de la représentation et montrer qu'elle est unique.
+
+
+ 
+\end{enumerate}
